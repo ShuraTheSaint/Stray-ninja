@@ -43,7 +43,8 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -511,7 +512,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -1780,8 +1781,8 @@ RectTransform:
   m_GameObject: {fileID: 1536754605}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1603368295}
   m_Father: {fileID: 822518108}
@@ -2101,7 +2102,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -2310,7 +2311,7 @@ MonoBehaviour:
   - {fileID: 8170153793362325373}
   WS: {fileID: 1786182978}
   GameOn: 0
-  isPc: 1
+  isPc: 0
 --- !u!4 &1786182977
 Transform:
   m_ObjectHideFlags: 0
@@ -2509,15 +2510,15 @@ RectTransform:
   m_GameObject: {fileID: 1934550341}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 220191776}
   m_Father: {fileID: 822518108}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -155}
+  m_AnchoredPosition: {x: 0, y: -204}
   m_SizeDelta: {x: -1500, y: -950}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1934550343
@@ -4050,7 +4051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a47042405ad89e847a32b7ed23c5b4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
+  speed: 15
   rotationSpeed: 300
   movementJoystick: {fileID: 8170153793215889866}
   rotationJoystick: {fileID: 8170153793362325369}
@@ -6309,10 +6310,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4004607995096177160}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 15
-  m_AngularDrag: 0.05
+  m_LinearDamping: 15
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -9493,10 +9494,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7993475911876886635}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 15
-  m_AngularDrag: 0.05
+  m_LinearDamping: 15
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -9576,7 +9577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a47042405ad89e847a32b7ed23c5b4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
+  speed: 15
   rotationSpeed: 300
   movementJoystick: {fileID: 8170153793215889866}
   rotationJoystick: {fileID: 8170153793362325369}
@@ -17874,7 +17875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a47042405ad89e847a32b7ed23c5b4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
+  speed: 15
   rotationSpeed: 300
   movementJoystick: {fileID: 8170153793215889866}
   rotationJoystick: {fileID: 8170153793362325369}
@@ -17960,10 +17961,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8749011980016420755}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 15
-  m_AngularDrag: 0.05
+  m_LinearDamping: 15
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
