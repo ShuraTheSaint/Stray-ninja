@@ -10,7 +10,9 @@ public class Movement : MonoBehaviour
     public GameManager gm; // Reference to the GameManager
 
     private Rigidbody rb; // Reference to the player's Rigidbody
-    private Vector3 inputDirection; // Stores the current input direction
+    private Vector3 pcMovementInput; // Stores PC input direction
+    private Vector3 joystickMovementInput; // Stores joystick input direction
+    private Camera mainCamera; // Cached main camera for mouse rotation
 
     void Start()
     {
@@ -20,66 +22,66 @@ public class Movement : MonoBehaviour
         {
             Debug.LogError("Rigidbody component missing from the player object.");
         }
-
-        // Ensure Rigidbody is not affected by physics forces in terms of rotation
         rb.freezeRotation = true; // Prevent rotation by physics forces
+
+        // Cache the main camera to avoid repeated calls 
+        mainCamera = Camera.main;
     }
 
     void Update()
     {
-        // Set the max speed based on game state
-        float maxSpeed = gm.GameOn ? speed : 0;
+        if (!gm.GameOn)
+            return;
 
         if (gm.isPc)
         {
-            HandlePCInput();
+            pcMovementInput = GetPCInput();
+            RotateWithMouse();
         }
         else
         {
-            HandleJoystickInput();
+            joystickMovementInput = GetJoystickInput();
+            RotateWithJoystick();
         }
+    }
 
-        // Apply movement
-        MovePlayer(maxSpeed);
+    void FixedUpdate()
+    {
+        if (!gm.GameOn)
+            return;
 
-        if (gm.GameOn)
+        if (gm.isPc)
         {
-            if (gm.isPc)
+            if (pcMovementInput != Vector3.zero)
             {
-                RotateWithMouse();
+                // Using AddForce in FixedUpdate for more consistent physics behavior
+                rb.AddForce(pcMovementInput.normalized * speed * 110);
             }
-            else
-            {
-                RotateWithJoystick();
-            }
+        }
+        else
+        {
+            // Directly set velocity for the joystick movement
+            rb.linearVelocity = joystickMovementInput * speed;
         }
     }
 
-    void HandlePCInput()
+    Vector3 GetPCInput()
     {
-        // Get the movement input from keyboard
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
-
-        // Create a direction vector based on input
-        inputDirection = new Vector3(moveX, 0, moveZ).normalized;
+        // Build a movement direction vector from the individual keys
+        Vector3 direction = Vector3.zero;
+        if (Input.GetKey(KeyCode.W)) direction += Vector3.forward;
+        if (Input.GetKey(KeyCode.S)) direction += Vector3.back;
+        if (Input.GetKey(KeyCode.A)) direction += Vector3.left;
+        if (Input.GetKey(KeyCode.D)) direction += Vector3.right;
+        return direction;
     }
 
-    void HandleJoystickInput()
+    Vector3 GetJoystickInput()
     {
-        // Get the movement input from the first joystick 
+        // Get the movement input from the joystick and normalize it
         float moveX = movementJoystick.Horizontal;
         float moveZ = movementJoystick.Vertical;
-
-        // Create a direction vector based on input
-        inputDirection = new Vector3(moveX, 0, moveZ).normalized;
-    }
-
-    void MovePlayer(float maxSpeed)
-    {
-        // Move the player based on the input direction and max speed
-        Vector3 targetVelocity = inputDirection * maxSpeed;
-        rb.linearVelocity = targetVelocity;
+        return new Vector3(moveX, 0, moveZ).normalized;
     }
 
     void RotateWithJoystick()
@@ -87,37 +89,28 @@ public class Movement : MonoBehaviour
         // Get the rotation input from the second joystick
         float rotateX = rotationJoystick.Horizontal;
         float rotateZ = rotationJoystick.Vertical;
-
-        // Create a direction vector based on the rotation input
         Vector3 rotationDirection = new Vector3(rotateX, 0, rotateZ);
 
-        // Check if there's significant input for rotation
         if (rotationDirection.magnitude > 0.1f)
         {
-            // Calculate the target rotation to face the input direction
             Quaternion targetRotation = Quaternion.LookRotation(rotationDirection, Vector3.up);
-
-            // Smoothly rotate towards the target rotation
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
 
     void RotateWithMouse()
     {
-        // Get the mouse position in the world
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        // Get the mouse position in the world using the cached main camera
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         Plane plane = new Plane(Vector3.up, transform.position.y);
         float distance;
-
         if (plane.Raycast(ray, out distance))
         {
             Vector3 target = ray.GetPoint(distance);
             Vector3 direction = target - transform.position;
-            direction.y = 0; // Ensure the player only rotates around the y-axis
-
+            direction.y = 0;
             if (direction.magnitude > 0.1f)
             {
-                // Calculate the target rotation to face the mouse position
                 Quaternion targetRotation = Quaternion.LookRotation(direction);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             }

@@ -2311,7 +2311,7 @@ MonoBehaviour:
   - {fileID: 8170153793362325373}
   WS: {fileID: 1786182978}
   GameOn: 0
-  isPc: 0
+  isPc: 1
 --- !u!4 &1786182977
 Transform:
   m_ObjectHideFlags: 0
@@ -4051,7 +4051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a47042405ad89e847a32b7ed23c5b4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 12
   rotationSpeed: 300
   movementJoystick: {fileID: 8170153793215889866}
   rotationJoystick: {fileID: 8170153793362325369}
@@ -8623,7 +8623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canShoot: 1
-  Extinguish: 1
+  shouldExtinguish: 0
   coolDown: 0
   fireballCd: 5
   bullet: {fileID: 1187546458036812, guid: 2c62a21a86fb9cc439d52734d04b5031, type: 3}
@@ -9577,7 +9577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a47042405ad89e847a32b7ed23c5b4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 12
   rotationSpeed: 300
   movementJoystick: {fileID: 8170153793215889866}
   rotationJoystick: {fileID: 8170153793362325369}
@@ -15327,7 +15327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15395,7 +15395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15478,7 +15478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.27450982}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15508,7 +15508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -17875,7 +17875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a47042405ad89e847a32b7ed23c5b4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 12
   rotationSpeed: 300
   movementJoystick: {fileID: 8170153793215889866}
   rotationJoystick: {fileID: 8170153793362325369}

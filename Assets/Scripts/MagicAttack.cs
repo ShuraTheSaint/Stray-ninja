@@ -1,16 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class MagicAttack : MonoBehaviour
 {
-    private GameManager gameManager; // Reference to the GameManager
     public bool canShoot = true;
-    public bool Extinguish = false;
+    public bool shouldExtinguish = false;
     public bool coolDown = false;
     public int fireballCd = 5;
-    private string cdUI;
     private int tempCD;
     public GameObject bullet;
     public Transform gun;
@@ -27,32 +24,20 @@ public class MagicAttack : MonoBehaviour
 
     void Update()
     {
-        // Check if the game is on
+        // Process input only when the game is active.
         if (gm.GameOn)
         {
-            // Get the input from the rotation joystick
-            float aimX = rotationJoystick.Horizontal;
-            float aimZ = rotationJoystick.Vertical;
-
-            // Create a direction vector based on the joystick input
-            Vector3 aimDirection = new Vector3(aimX, 0, aimZ).normalized;
-
-            // Check if there's significant input for aiming and if the player can shoot
-            if (canShoot && aimDirection.magnitude > 0.1f)
+            if (gm.isPc)
             {
-                Extinguish = false; // Ensure we are not extinguishing right after shooting
-                // Instantiate the bullet
-                Instantiate(bullet, gun.position + transform.forward, player.rotation);
-                canShoot = false;
-                // Start cooldown after shooting
+                HandleMouseMagicInput();
             }
-            else if (Extinguish == false && aimDirection.magnitude == 0)
+            else
             {
-                Extinguish = true;
+                HandleJoystickMagicInput();
             }
         }
 
-        // Handle the cooldown process
+        // Start the cooldown process if triggered.
         if (coolDown)
         {
             coolDown = false;
@@ -61,14 +46,54 @@ public class MagicAttack : MonoBehaviour
         }
     }
 
+    private void HandleMouseMagicInput()
+    {
+        // For PC: Fire once per click.
+        if (Input.GetMouseButton(0))
+        {
+            if (canShoot)
+            {
+                Instantiate(bullet, gun.position + transform.forward, player.rotation);
+                canShoot = false;
+                shouldExtinguish = false;
+            }
+        }
+        else
+        {
+            // No input – set flag to allow future shots if needed.
+            if (!shouldExtinguish)
+            {
+                shouldExtinguish = true;
+            }
+        }
+    }
+
+    private void HandleJoystickMagicInput()
+    {
+        // For Mobile: Read the joystick input.
+        float aimX = rotationJoystick.Horizontal;
+        float aimZ = rotationJoystick.Vertical;
+        Vector3 aimDirection = new Vector3(aimX, 0, aimZ).normalized;
+
+        if (canShoot && aimDirection.magnitude > 0.1f)
+        {
+            shouldExtinguish = false;
+            Instantiate(bullet, gun.position + transform.forward, player.rotation);
+            canShoot = false;
+        }
+        else if (!shouldExtinguish && aimDirection.magnitude == 0)
+        {
+            shouldExtinguish = true;
+        }
+    }
+
     IEnumerator CoolDown()
     {
-        for (int x = 1; x <= fireballCd; x++)
+        while (tempCD > 0)
         {
-            cdUI = tempCD.ToString();
-            CD.text = cdUI;
+            CD.text = tempCD.ToString();
             yield return new WaitForSeconds(1);
-            tempCD -= 1;
+            tempCD--;
         }
         cdtext.SetActive(false);
         tempCD = fireballCd;

@@ -6,56 +6,95 @@ public class Fireball : MonoBehaviour
     public Rigidbody rigidb;
     MagicAttack wand;
     public float fixedYa = 0f; // Fixed Y position for the object
-    public float followSpeed = 2000f; // Speed at which the object follows the joystick input
+    public float followSpeed = 2000f; // Speed at which the object follows the target
     public Joystick rotationJoystick; // Reference to the rotation joystick
+
+    private Camera mainCamera;
+    // Movement threshold: if the squared distance is below this value, we do not move.
+    private const float movementThresholdSqr = 0.01f; // (0.1f^2)
 
     void Awake()
     {
+        // Get a reference to the MagicAttack script on the Player.
         wand = GameObject.Find("Player").GetComponent<MagicAttack>();
         rigidb = GetComponent<Rigidbody>();
-        rotationJoystick = GameObject.Find("Aim").GetComponent<FloatingJoystick>();
+
+        // Cache the main camera for PC.
+        mainCamera = Camera.main;
+
+        // Assign joystick only for mobile input.
+        if (wand.gm.isPc)
+        {
+            rotationJoystick = null;
+        }
+        else
+        {
+            rotationJoystick = GameObject.Find("Aim").GetComponent<Joystick>();
+        }
         StartCoroutine(Fire());
     }
 
     IEnumerator Fire()
     {
-        yield return new WaitForSeconds(5); // Wait for 5 seconds before extinguishing the fireball
+        // Wait 5 seconds before extinguishing the fireball.
+        yield return new WaitForSeconds(5);
         Extinguish();
     }
 
     void Extinguish()
     {
-        wand.coolDown = true; // Signal the cooldown to the MagicAttack script
-        Destroy(gameObject); // Destroy the fireball
+        // Signal the cooldown in the MagicAttack script then destroy this fireball.
+        wand.coolDown = true;
+        Destroy(gameObject);
     }
 
     void Update()
     {
-        // Prevent immediate extinguishing after creation
+        // Skip processing during the first frame.
         if (Time.timeSinceLevelLoad < 0.1f)
         {
-            return; // Skip the initial frame to avoid immediate extinguish
+            return;
         }
 
-        // Check if the MagicAttack script wants to extinguish the fireball
-        if (wand.Extinguish == true)
+        // Check if MagicAttack indicated the fireball should be extinguished.
+        if (wand.shouldExtinguish == true)
         {
-            wand.Extinguish = false;
+            wand.shouldExtinguish = false;
             Extinguish();
         }
 
-        // Get the input from the rotation joystick
-        float moveX = rotationJoystick.Horizontal;
-        float moveZ = rotationJoystick.Vertical;
-
-        // Create a direction vector based on the joystick input
-        Vector3 direction = new Vector3(moveX, 0, moveZ).normalized;
-
-        // Move the fireball only if there's significant joystick input
-        if (direction.magnitude > 0.1f)
+        // Process input based on platform.
+        if (wand.gm.isPc)
         {
-            Vector3 step = direction * followSpeed * Time.deltaTime;
-            rigidb.MovePosition(transform.position + step);
+            // For PC: Use the mouse cursor as the target.
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            Plane plane = new Plane(Vector3.up, new Vector3(0, fixedYa, 0));
+            if (plane.Raycast(ray, out float distance))
+            {
+                Vector3 targetPoint = ray.GetPoint(distance);
+                Vector3 offset = targetPoint - transform.position;
+
+                // Move only if the offset is above the threshold.
+                if (offset.sqrMagnitude > movementThresholdSqr)
+                {
+                    Vector3 direction = offset.normalized;
+                    Vector3 step = direction * followSpeed * Time.deltaTime;
+                    rigidb.MovePosition(transform.position + step);
+                }
+            }
+        }
+        else
+        {
+            // For Mobile: Use joystick input.
+            float moveX = rotationJoystick.Horizontal;
+            float moveZ = rotationJoystick.Vertical;
+            Vector3 direction = new Vector3(moveX, 0, moveZ);
+            if (direction.magnitude > 0.1f)
+            {
+                direction = direction.normalized;
+                Vector3 step = direction * followSpeed * Time.deltaTime;
+                rigidb.MovePosition(transform.position + step);
+            }
         }
     }
 }
