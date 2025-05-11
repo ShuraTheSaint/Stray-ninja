@@ -15,7 +15,7 @@ public class WalkedOn : MonoBehaviour
     {
         if (other.gameObject.CompareTag(Tags[0]))
         {
-            expS.exp++;
+            expS.AddExperience(1);
             Destroy(gameObject);
         }
     }

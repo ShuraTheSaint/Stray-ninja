@@ -30,13 +30,6 @@ public class Xp : MonoBehaviour
 
     private void DropXP()
     {
-       GameObject xp = Instantiate(xpCollectiblePrefab, SpawnPoint.position + offset, SpawnPoint.rotation);
-        Rigidbody rb = xp.GetComponent<Rigidbody>();
-
-        if (rb != null)
-        {
-            rb.linearVelocity = SpawnPoint.forward * speed;
-        }
-        
+       GameObject xp = Instantiate(xpCollectiblePrefab, SpawnPoint.position + offset, SpawnPoint.rotation);       
     }
 }

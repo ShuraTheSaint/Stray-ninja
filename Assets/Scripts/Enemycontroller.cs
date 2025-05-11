@@ -22,7 +22,6 @@ public class Enemycontroller : MonoBehaviour
 
         if (gm.GameOn == true)
         {
-            GameObject Difficulty = GameObject.Find("Difficulty manager");
             agent.speed = speed;
             float distance = Vector3.Distance(target.position, transform.position);
 

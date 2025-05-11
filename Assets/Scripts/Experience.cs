@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -9,30 +7,47 @@ public class Experience : MonoBehaviour
     public int level = 1;
     public float exp = 0;
     public float expReq = 10;
-    public string Tag = "Exp";
-    TextMeshProUGUI EXPtext;
-    TextMeshProUGUI LVtext;
+    private TextMeshProUGUI EXPtext;
+    private TextMeshProUGUI LVtext;
 
     private void Start()
     {
         LVtext = GameObject.Find("LVN").GetComponent<TextMeshProUGUI>();
         EXPtext = GameObject.Find("EXPN").GetComponent<TextMeshProUGUI>();
+        UpdateUI();
     }
 
-    public void Update()
+    // Call this method whenever you want to add experience
+    public void AddExperience(float amount)
     {
-        upgrades.LevelUp = level;
-        EXPtext.text = exp.ToString();
-        if (exp >= expReq)
+        exp += amount;
+        bool leveledUp = false;
+        while (exp >= expReq)
         {
-            level = level + 1;
-            exp = exp - expReq;
+            exp -= expReq;
+            level++;
             expReq = Mathf.Round(expReq * 1.1f + 10);
+            leveledUp = true;
+            upgrades.NewLevel();
+        }
+        UpdateUI();
+        if (leveledUp)
+        {
             ChangeText(level.ToString());
         }
     }
+
+    private void UpdateUI()
+    {
+        if (EXPtext != null)
+            EXPtext.text = exp.ToString("F0");
+        if (LVtext != null)
+            LVtext.text = level.ToString();
+    }
+
     public void ChangeText(string newText)
     {
-        LVtext.text = newText;
+        if (LVtext != null)
+            LVtext.text = newText;
     }
 }

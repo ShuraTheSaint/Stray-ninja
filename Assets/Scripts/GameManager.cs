@@ -1,55 +1,48 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public bool mainGame = true;
     public GameObject[] UI;
-    public WeaponSwitcher WS;
     public bool GameOn = true;
     public bool isPc = true;
 
     public void Start()
     {
         Application.targetFrameRate = 120;
-        if (mainGame)
+
+        // Defensive: Only set UI elements if they exist
+        if (UI.Length > 0) UI[0].SetActive(false);
+        if (UI.Length > 1) UI[1].SetActive(false);
+        if (UI.Length > 2) UI[2].SetActive(false);
+        if (UI.Length > 3) UI[3].SetActive(true);
+
+        if (isPc)
         {
-            UI[0].SetActive(false);
-            UI[1].SetActive(false);
-            UI[2].SetActive(false);
-            UI[3].SetActive(true);
-            if (isPc)
-            {
-                UI[5].SetActive(false);
-                UI[6].SetActive(false);
-            }
+            if (UI.Length > 5) UI[5].SetActive(false);
+            if (UI.Length > 6) UI[6].SetActive(false);
         }
     }
 
     public void playerDead()
     {
-        if(mainGame)
-        {
-            UI[0].SetActive(true);
-            UI[1].SetActive(true);
-            UI[4].SetActive(false);
-            UI[5].SetActive(false);
-            UI[6].SetActive(false);
-            GameOn = false;
-            Time.timeScale = 0;
-        }
+        if (UI.Length > 0) UI[0].SetActive(true);
+        if (UI.Length > 1) UI[1].SetActive(true);
+        if (UI.Length > 4) UI[4].SetActive(false);
+        if (UI.Length > 5) UI[5].SetActive(false);
+        if (UI.Length > 6) UI[6].SetActive(false);
+
+        GameOn = false;
+        Time.timeScale = 0;
     }
+
     public void play()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("TheGame"); // Consider using scene name for clarity
     }
 
     public void quit()
     {
         Application.Quit();
     }
-
-
 }

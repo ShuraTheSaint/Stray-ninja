@@ -22,10 +22,4 @@ public class DifficultyManager : MonoBehaviour
         }
         StartCoroutine(SpawnControl());
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

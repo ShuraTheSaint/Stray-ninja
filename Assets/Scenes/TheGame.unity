@@ -172,7 +172,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Size: {x: 0.4, y: 0.4, z: 0.4}
   m_Center: {x: 0, y: 0.18, z: 0}
 --- !u!136 &23152584
 CapsuleCollider:
@@ -193,7 +193,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.18
   m_Height: 1.93
   m_Direction: 1
   m_Center: {x: 0, y: 1.04, z: 0}
@@ -696,12 +696,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382755164}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -808.5568, y: -726.79846, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1275171917}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &569025642
 GameObject:
@@ -1172,17 +1172,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795236672}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 605058860}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1275171917}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -808.5568, y: -726.79846}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &822518104
@@ -1274,18 +1274,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822518104}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1536754606}
   - {fileID: 1934550342}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1275171917}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -808.5568, y: -726.79846}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &963194225
@@ -1593,6 +1593,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106592133}
   m_CullTransparentMesh: 1
+--- !u!1 &1275171916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1275171917}
+  m_Layer: 0
+  m_Name: UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1275171917
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275171916}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 808.5568, y: 726.79846, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1580255469}
+  - {fileID: 795236676}
+  - {fileID: 822518108}
+  - {fileID: 382755167}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1377891836
 GameObject:
   m_ObjectHideFlags: 0
@@ -1989,7 +2024,7 @@ RectTransform:
   - {fileID: 1106592134}
   - {fileID: 8170153793215889871}
   - {fileID: 8170153793362325372}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1275171917}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2132,6 +2167,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603368294}
   m_CullTransparentMesh: 1
+--- !u!114 &1615317712 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5406393280954227066, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2318744000026612953}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1616061936
 GameObject:
   m_ObjectHideFlags: 0
@@ -2270,6 +2317,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1616061936}
   m_CullTransparentMesh: 1
+--- !u!114 &1697544373 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5620573654283037081, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2318744000026612953}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1786182975
 GameObject:
   m_ObjectHideFlags: 0
@@ -2300,7 +2359,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66971c3979cfc994898247fa148ea288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainGame: 1
   UI:
   - {fileID: 795236672}
   - {fileID: 822518104}
@@ -2309,7 +2367,6 @@ MonoBehaviour:
   - {fileID: 1106592133}
   - {fileID: 8170153793215889870}
   - {fileID: 8170153793362325373}
-  WS: {fileID: 1786182978}
   GameOn: 0
   isPc: 1
 --- !u!4 &1786182977
@@ -2345,6 +2402,7 @@ MonoBehaviour:
   - {fileID: 8749011980016420755}
   Selection: {fileID: 610056993}
   gm: {fileID: 1786182976}
+  upgrades: {fileID: 1423268049}
   currentWeapon: 0
 --- !u!1 &1862251798
 GameObject:
@@ -4825,6 +4883,173 @@ PrefabInstance:
       propertyPath: kunai
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: LevelUp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: currentVariant
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: choiceTexts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: SwordUpgrades.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: 'choiceTexts.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1466834267}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: 'choiceTexts.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1615317712}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: 'choiceTexts.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1697544373}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: NinjitsuUpgrades.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: ShurikenUpgrades.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: SwordUpgrades.Array.data[0].name
+      value: Strenght and Dexterity
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: SwordUpgrades.Array.data[1].name
+      value: Lifesteal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: SwordUpgrades.Array.data[2].name
+      value: 'Blood lust '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: SwordUpgrades.Array.data[3].name
+      value: Illusionary blade
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: NinjitsuUpgrades.Array.data[0].name
+      value: Flames of hell
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: NinjitsuUpgrades.Array.data[1].name
+      value: Midnight sun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: NinjitsuUpgrades.Array.data[2].name
+      value: 'Combustion  '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: NinjitsuUpgrades.Array.data[3].name
+      value: 'Flames of fear '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: ShurikenUpgrades.Array.data[0].name
+      value: Kunai
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: ShurikenUpgrades.Array.data[1].name
+      value: Fast hands
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: ShurikenUpgrades.Array.data[2].name
+      value: Pain and fear
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: ShurikenUpgrades.Array.data[3].name
+      value: Precision strike
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: SwordUpgrades.Array.data[0].description
+      value: 'Increases swing speed and damage '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: SwordUpgrades.Array.data[1].description
+      value: Has a chance to heal after killing an enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: SwordUpgrades.Array.data[2].description
+      value: Gain movement speed after killing an enemy for a short while, stacks
+        with multiple kills
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: SwordUpgrades.Array.data[3].description
+      value: Makes your sword bigger and easier to hit with
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: NinjitsuUpgrades.Array.data[0].description
+      value: Faster burn and more  damage
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: NinjitsuUpgrades.Array.data[1].description
+      value: Increases the fireball size the longer it is conjured
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: NinjitsuUpgrades.Array.data[2].description
+      value: 'Deals damage on impact '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: NinjitsuUpgrades.Array.data[3].description
+      value: Enemies have a chance to catch on fire from a nearby enemy who is on
+        fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: ShurikenUpgrades.Array.data[0].description
+      value: Increases damage, pierces enemies
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: ShurikenUpgrades.Array.data[1].description
+      value: Throws shurikens faster
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: ShurikenUpgrades.Array.data[2].description
+      value: 'Succesive hits increase damage '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: ShurikenUpgrades.Array.data[3].description
+      value: Has a chance to instakill
+      objectReference: {fileID: 0}
     - target: {fileID: 5861056004746502349, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4904,6 +5129,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Upgrade Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031988172921438013, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6243,7 +6473,7 @@ Transform:
   m_GameObject: {fileID: 4004607995096177160}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2.095}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -6251,7 +6481,6 @@ Transform:
   - {fileID: 1105221832226416525}
   - {fileID: 3399751232291167236}
   - {fileID: 46447849}
-  - {fileID: 4681308076358596390}
   - {fileID: 8236243595322354197}
   m_Father: {fileID: 751335056}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6594,21 +6823,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.6774956, y: 0.0970193, z: -0.0000000037252903}
     m_Extent: {x: 0.008858502, y: 0.018823076, z: 0.06820805}
   m_DirtyAABB: 0
---- !u!4 &4681308076358596390
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5457386691641027996}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.004, y: 0.948, z: 0.615}
-  m_LocalScale: {x: 1, y: 1.25, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4384510894002258098}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &4692540290450761657
 Transform:
   m_ObjectHideFlags: 0
@@ -6841,25 +7055,6 @@ Transform:
   - {fileID: 7776068904959299785}
   m_Father: {fileID: 7395373253164815616}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5457386691641027996
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4681308076358596390}
-  - component: {fileID: 8599768013199800451}
-  - component: {fileID: 5817652603120159817}
-  - component: {fileID: 8806735750677477651}
-  m_Layer: 0
-  m_Name: Sword9_Red
-  m_TagString: Sword
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &5470141058252638457
 GameObject:
   m_ObjectHideFlags: 0
@@ -7157,51 +7352,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!23 &5817652603120159817
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5457386691641027996}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 72bcee339808e42418cd87c782e2038c, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!137 &5830822911850073664
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -9442,7 +9592,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.18
   m_Height: 1.93
   m_Direction: 1
   m_Center: {x: 0, y: 1.04, z: 0}
@@ -9465,7 +9615,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Size: {x: 0.4, y: 0.4, z: 0.4}
   m_Center: {x: 0, y: 0.18, z: 0}
 --- !u!4 &7993475911876886626
 Transform:
@@ -9550,7 +9700,6 @@ MonoBehaviour:
   level: 1
   exp: 0
   expReq: 10
-  Tag: Exp
 --- !u!114 &7993475911876886630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9621,7 +9770,6 @@ GameObject:
   - component: {fileID: 7993475911876886628}
   - component: {fileID: 7993475911876886629}
   - component: {fileID: 7993475911876886634}
-  - component: {fileID: 7993475911876886636}
   m_Layer: 0
   m_Name: PlayerRanged
   m_TagString: Player
@@ -9629,19 +9777,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &7993475911876886636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7993475911876886635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2023f3526cb1d7449597cdf32495a97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rup: {fileID: 0}
 --- !u!4 &7993475911878843833
 Transform:
   m_ObjectHideFlags: 0
@@ -15075,7 +15210,6 @@ MonoBehaviour:
   level: 1
   exp: 0
   expReq: 10
-  Tag: Exp
 --- !u!137 &8092178591558675440
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -15875,14 +16009,6 @@ Transform:
   - {fileID: 4600514345484978047}
   m_Father: {fileID: 7215110311191546438}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8599768013199800451
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5457386691641027996}
-  m_Mesh: {fileID: -3360482121813643214, guid: 4b2b81e7f27ec37418a99c591212245d, type: 3}
 --- !u!1 &8603166210505475758
 GameObject:
   m_ObjectHideFlags: 0
@@ -17910,7 +18036,6 @@ MonoBehaviour:
   level: 1
   exp: 0
   expReq: 10
-  Tag: Exp
 --- !u!1 &8749011980016420755
 GameObject:
   m_ObjectHideFlags: 0
@@ -18000,7 +18125,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.18
   m_Height: 1.93
   m_Direction: 1
   m_Center: {x: 0, y: 1.04, z: 0}
@@ -18023,7 +18148,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.3, y: 0.3, z: 0.3}
+  m_Size: {x: 0.4, y: 0.4, z: 0.4}
   m_Center: {x: 0, y: 0.18, z: 0}
 --- !u!4 &8749011980042098426
 Transform:
@@ -22154,27 +22279,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &8806735750677477651
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5457386691641027996}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.44737184, y: 1.8952271, z: 0.116060525}
-  m_Center: {x: -0.00000011920929, y: 0.5263277, z: -0.000000027939684}
 --- !u!4 &8826104069414758551
 Transform:
   m_ObjectHideFlags: 0
@@ -22358,13 +22462,10 @@ SceneRoots:
   m_Roots:
   - {fileID: 705507995}
   - {fileID: 963194228}
-  - {fileID: 235577671}
-  - {fileID: 1580255469}
-  - {fileID: 795236676}
-  - {fileID: 822518108}
-  - {fileID: 382755167}
-  - {fileID: 1968371936}
-  - {fileID: 2038963480}
   - {fileID: 1786182977}
+  - {fileID: 235577671}
+  - {fileID: 1968371936}
+  - {fileID: 1275171917}
+  - {fileID: 2038963480}
   - {fileID: 751335056}
   - {fileID: 2318744000026612953}
