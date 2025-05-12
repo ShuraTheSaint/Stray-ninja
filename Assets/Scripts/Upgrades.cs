@@ -86,6 +86,9 @@ public class Upgrades : MonoBehaviour
         if (choiceIndex < currentChoices.Count)
         {
             Upgrade chosen = currentChoices[choiceIndex];
+            // Remove the chosen upgrade from the correct variant's upgrade pool
+            List<Upgrade> variantUpgrades = GetCurrentVariantUpgrades();
+            variantUpgrades.Remove(chosen);
             // TODO: Apply the effect of the chosen upgrade here
             Debug.Log("Chosen upgrade: " + chosen.name);
 

@@ -4901,7 +4901,7 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: SwordUpgrades.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
@@ -4921,12 +4921,12 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: NinjitsuUpgrades.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: ShurikenUpgrades.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
@@ -4950,6 +4950,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
+      propertyPath: SwordUpgrades.Array.data[4].name
+      value: Monster
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: SwordUpgrades.Array.data[5].name
+      value: Blood coat
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
       propertyPath: NinjitsuUpgrades.Array.data[0].name
       value: Flames of hell
       objectReference: {fileID: 0}
@@ -4967,6 +4977,16 @@ PrefabInstance:
         type: 3}
       propertyPath: NinjitsuUpgrades.Array.data[3].name
       value: 'Flames of fear '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: NinjitsuUpgrades.Array.data[4].name
+      value: Warming up
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: NinjitsuUpgrades.Array.data[5].name
+      value: Fired up
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
@@ -4990,6 +5010,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
+      propertyPath: ShurikenUpgrades.Array.data[4].name
+      value: Taste of blood
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: ShurikenUpgrades.Array.data[5].name
+      value: Balista
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
       propertyPath: SwordUpgrades.Array.data[0].description
       value: 'Increases swing speed and damage '
       objectReference: {fileID: 0}
@@ -5001,13 +5031,22 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: SwordUpgrades.Array.data[2].description
-      value: Gain movement speed after killing an enemy for a short while, stacks
-        with multiple kills
+      value: Gain movement speed the more enemies there are
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: SwordUpgrades.Array.data[3].description
       value: Makes your sword bigger and easier to hit with
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: SwordUpgrades.Array.data[4].description
+      value: Grow in size and get hp after 100 kills
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: SwordUpgrades.Array.data[5].description
+      value: Increased damage after a kill for short time stacks
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
@@ -5032,6 +5071,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
+      propertyPath: NinjitsuUpgrades.Array.data[4].description
+      value: Every 100 kills gain hp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: NinjitsuUpgrades.Array.data[5].description
+      value: Touching yourself with fireball increases movespeed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
       propertyPath: ShurikenUpgrades.Array.data[0].description
       value: Increases damage, pierces enemies
       objectReference: {fileID: 0}
@@ -5049,6 +5098,16 @@ PrefabInstance:
         type: 3}
       propertyPath: ShurikenUpgrades.Array.data[3].description
       value: Has a chance to instakill
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: ShurikenUpgrades.Array.data[4].description
+      value: Gain movement speed after a kill for a short time
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: ShurikenUpgrades.Array.data[5].description
+      value: Gain 5 temporary hp when stationary
       objectReference: {fileID: 0}
     - target: {fileID: 5861056004746502349, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
