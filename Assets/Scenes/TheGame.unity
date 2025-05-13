@@ -2368,7 +2368,7 @@ MonoBehaviour:
   - {fileID: 8170153793215889870}
   - {fileID: 8170153793362325373}
   GameOn: 0
-  isPc: 1
+  isPc: 0
 --- !u!4 &1786182977
 Transform:
   m_ObjectHideFlags: 0
@@ -5001,12 +5001,12 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: ShurikenUpgrades.Array.data[2].name
-      value: Pain and fear
+      value: Calculated murder
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: ShurikenUpgrades.Array.data[3].name
-      value: Precision strike
+      value: Lucky throw
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
@@ -5017,6 +5017,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ShurikenUpgrades.Array.data[5].name
       value: Balista
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: SwordUpgrades.Array.data[0].isActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
@@ -5092,7 +5097,7 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: ShurikenUpgrades.Array.data[2].description
-      value: 'Succesive hits increase damage '
+      value: 'Attack speed decreased, damage increased '
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}

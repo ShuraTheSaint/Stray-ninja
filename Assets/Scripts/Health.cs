@@ -31,7 +31,7 @@ public class Health : MonoBehaviour
     {
         up = GameObject.Find("Upgrade Manager")?.GetComponent<Upgrades>();
         if (fire != null)
-            fire.SetActive(false);
+        fire.SetActive(false);
 
         skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
         if (skinnedMeshRenderers != null && skinnedMeshRenderers.Length > 0)
@@ -56,8 +56,14 @@ public class Health : MonoBehaviour
         if (other.gameObject.CompareTag(bulletTag))
         {
             if (damage.Length > 0)
-                ApplyDamage(damage[0]);
-            Destroy(other.gameObject);
+                ApplyDamage(damage[0]+up.kunaiDamage+up.calculatedDamage);
+            
+            // Only destroy the bullet if Kunai upgrade is NOT active
+            if (up == null || !up.kunai)
+            {
+                Destroy(other.gameObject);
+            }
+            // else: let the bullet pass through (do not destroy)
         }
 
         if (other.gameObject.CompareTag(playerTag))
