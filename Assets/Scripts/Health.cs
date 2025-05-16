@@ -26,9 +26,13 @@ public class Health : MonoBehaviour
     // Cached player and Damage reference
     private GameObject player;
     private Damage playerDamage;
+    Movement move;
+    Experience expS;
 
     private void Awake()
     {
+        expS = GameObject.Find("Player").GetComponent<Experience>();
+        move = GameObject.Find("Player")?.GetComponent<Movement>();
         up = GameObject.Find("Upgrade Manager")?.GetComponent<Upgrades>();
         if (fire != null)
         fire.SetActive(false);
@@ -132,10 +136,13 @@ public class Health : MonoBehaviour
 
         if (hpoints <= 0)
         {
+            if(up.tasteofblood)
+            {
+                move.Tasting();
+            }
             hasDied = true;
-            if (xp != null)
-                xp.dropxpp();
-            Destroy(gameObject);
+            if (xp != null && !up.shadowCore) xp.dropxpp(); else expS.AddExperience(2);
+                Destroy(gameObject);
         }
     }
 

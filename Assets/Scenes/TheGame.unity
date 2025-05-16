@@ -2368,7 +2368,7 @@ MonoBehaviour:
   - {fileID: 8170153793215889870}
   - {fileID: 8170153793362325373}
   GameOn: 0
-  isPc: 0
+  isPc: 1
 --- !u!4 &1786182977
 Transform:
   m_ObjectHideFlags: 0
@@ -5006,7 +5006,7 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: ShurikenUpgrades.Array.data[3].name
-      value: Lucky throw
+      value: Shadow core
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
@@ -5016,7 +5016,7 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: ShurikenUpgrades.Array.data[5].name
-      value: Balista
+      value: Smooth throw
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
@@ -5102,7 +5102,7 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: ShurikenUpgrades.Array.data[3].description
-      value: Has a chance to instakill
+      value: Absorb more experience through kill
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
@@ -5112,7 +5112,7 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: ShurikenUpgrades.Array.data[5].description
-      value: Gain 5 temporary hp when stationary
+      value: Increase range
       objectReference: {fileID: 0}
     - target: {fileID: 5861056004746502349, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}

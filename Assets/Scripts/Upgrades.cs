@@ -2,10 +2,11 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Represents a single upgrade option
 [System.Serializable]
-public class Upgrade
+public class UpgradesBlueprint
 {
     public string name;
     public string description;
@@ -17,12 +18,12 @@ public class Upgrades : MonoBehaviour
     public enum CharacterVariant { Shuriken, Sword, Ninjitsu }
     public CharacterVariant currentVariant;
 
-    public List<Upgrade> NinjitsuUpgrades;
-    public List<Upgrade> ShurikenUpgrades;
-    public List<Upgrade> SwordUpgrades;
+    public List<UpgradesBlueprint> NinjitsuUpgrades;
+    public List<UpgradesBlueprint> ShurikenUpgrades;
+    public List<UpgradesBlueprint> SwordUpgrades;
     public GameObject selection;
     public TextMeshProUGUI[] choiceTexts;
-    private List<Upgrade> currentChoices = new List<Upgrade>();
+    private List<UpgradesBlueprint> currentChoices = new List<UpgradesBlueprint>();
 
     // --- Added for queuing level-ups ---
     private int pendingLevelUps = 0;
@@ -51,19 +52,20 @@ public class Upgrades : MonoBehaviour
         // -----------------------------------
     }
 
-    List<Upgrade> GetCurrentVariantUpgrades()
+    List<UpgradesBlueprint> GetCurrentVariantUpgrades()
     {
         switch (currentVariant)
         {
             case CharacterVariant.Sword: return SwordUpgrades;
             case CharacterVariant.Ninjitsu: return NinjitsuUpgrades;
             case CharacterVariant.Shuriken: return ShurikenUpgrades;
-            default: return new List<Upgrade>();
+            default: return new List<UpgradesBlueprint>();
         }
     }
 
     void ShowUpgradeChoices()
     {
+        Time.timeScale = 0f; // Pause the game
         // --- Prevent level up if no upgrades are available ---
         if (GetCurrentVariantUpgrades().Count == 0)
         {
@@ -85,10 +87,10 @@ public class Upgrades : MonoBehaviour
         }
     }
 
-    List<Upgrade> RollUpgrades(int count)
+    List<UpgradesBlueprint> RollUpgrades(int count)
     {
-        List<Upgrade> pool = new List<Upgrade>(GetCurrentVariantUpgrades());
-        List<Upgrade> result = new List<Upgrade>();
+        List<UpgradesBlueprint> pool = new List<UpgradesBlueprint>(GetCurrentVariantUpgrades());
+        List<UpgradesBlueprint> result = new List<UpgradesBlueprint>();
         for (int i = 0; i < count && pool.Count > 0; i++)
         {
             int idx = Random.Range(0, pool.Count);
@@ -104,6 +106,7 @@ public class Upgrades : MonoBehaviour
 
     void ApplyUpgrade(int choiceIndex)
     {
+        Time.timeScale = 1f; // Unpause the game
         selection.SetActive(false);
         // --- Reset selection state ---
         isSelectingUpgrade = false;
@@ -111,8 +114,8 @@ public class Upgrades : MonoBehaviour
 
         if (choiceIndex < currentChoices.Count)
         {
-            Upgrade chosen = currentChoices[choiceIndex];
-            List<Upgrade> variantUpgrades = GetCurrentVariantUpgrades();
+            UpgradesBlueprint chosen = currentChoices[choiceIndex];
+            List<UpgradesBlueprint> variantUpgrades = GetCurrentVariantUpgrades();
             variantUpgrades.Remove(chosen);
 
             Debug.Log("Chosen upgrade: " + chosen.name);
@@ -132,6 +135,22 @@ public class Upgrades : MonoBehaviour
                 Debug.Log("Calculated murder upgrade applied!");
                 CalculatedMurderUpgrade();
             }
+            if (chosen.name == "Taste of blood")
+            {
+                Debug.Log("Taste of blood upgrade applied!");
+                TasteofbloodUpgrade();
+            }
+            if (chosen.name == "Shadow core")
+            {
+                Debug.Log("Shadow core upgrade applied!");
+                ShadowCoreUpgrade();
+            }
+            if (chosen.name == "Smooth throw")
+            {
+                Debug.Log("Smooth throw upgrade applied!");
+                SmoothThrowUpgrade();
+            }
+
             // -------------------------------
         }
 
@@ -147,6 +166,9 @@ public class Upgrades : MonoBehaviour
     [Header("Upgrade Tracking")]
     public bool kunai;
     public bool calculatedMurder;
+    public bool tasteofblood;
+    public bool smoothThrow;
+    public bool shadowCore;
     public int kunaiDamage = 0;
     public int calculatedDamage = 0;
 
@@ -158,24 +180,38 @@ public class Upgrades : MonoBehaviour
     void kunaiUpgrade()
     {
         kunai = true;
-        kunaiDamage = 5;
+        kunaiDamage = 1;
         Debug.Log("Attack damage increased!");
     }
 
     // --- Fast Hands upgrade effect ---
-    public void FastHandsUpgrade()
+    void FastHandsUpgrade()
     {
         attackSpeed += 1f; // Increase attack speed by 100%
         Debug.Log("Attack speed increased!");
     }
 
-    public void CalculatedMurderUpgrade()
+    void CalculatedMurderUpgrade()
     {
         calculatedMurder = true;
         attackSpeed -= 0.9f; // Decrease attack speed by 90%
-        calculatedDamage += 10; // Increase damage by 5
+        calculatedDamage += 10; // Increase damage by 10
         Debug.Log("Attack speed Decreased!");
         Debug.Log("Attack damage increased!");
+    }
+    void TasteofbloodUpgrade()
+    {
+        tasteofblood = true;
+    }
+
+    void ShadowCoreUpgrade()
+    {
+        shadowCore = true;
+    }
+
+    void SmoothThrowUpgrade()
+    {
+        smoothThrow = true;
     }
     // ---------------------------------
 }

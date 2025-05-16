@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -115,5 +116,17 @@ public class Movement : MonoBehaviour
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             }
         }
+    }
+
+    public void Tasting()
+    {
+        StartCoroutine(TastingCoroutine());
+    }
+
+    IEnumerator TastingCoroutine()
+    {
+        speed += 0.3f;
+        yield return new WaitForSeconds(5);
+        speed -= 0.3f;
     }
 }

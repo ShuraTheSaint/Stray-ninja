@@ -4,6 +4,7 @@ using UnityEngine;
 public class Shoot : MonoBehaviour
 {
     public bool canShoot = true; // Indicates if the player can shoot
+    bool AnimationPlaying = false;
     public Transform player; // Reference to the player transform
     public Transform gun; // Reference to the main gun transform
     public GameObject bullet; // Prefab for the main bullet (shuriken)
@@ -14,6 +15,7 @@ public class Shoot : MonoBehaviour
     Upgrades up;
 
     private WaitForSeconds fireWait; // Cached WaitForSeconds for fire interval
+    WaitForSeconds AnimWait; // Cached WaitForSecondsRealtime for fire interval
     private float lastAttackSpeed = 1f; // Track last attack speed to update fireWait if needed
 
     void Start()
@@ -21,6 +23,7 @@ public class Shoot : MonoBehaviour
         up = GameObject.Find("Upgrade Manager")?.GetComponent<Upgrades>();
         // Cache the fire interval so we don't allocate every shot
         fireWait = new WaitForSeconds(1f / fireRate);
+        AnimWait = new WaitForSeconds(0.075f);
         lastAttackSpeed = up != null ? up.attackSpeed : 1f;
     }
 
@@ -51,13 +54,13 @@ public class Shoot : MonoBehaviour
         {
             if (canShoot)
             {
-                anim.SetBool("Shooting", true);
                 StartCoroutine(ShootBullet());
+                if(!AnimationPlaying)
+                {
+                    AnimationPlaying = true;
+                    StartCoroutine(PlayAnimation());
+                }
             }
-        }
-        else
-        {
-            anim.SetBool("Shooting", false);
         }
     }
 
@@ -78,5 +81,13 @@ public class Shoot : MonoBehaviour
         Instantiate(bullet, gun.position + gun.forward, player.rotation);
         yield return fireWait;
         canShoot = true;
+    }
+
+    private IEnumerator PlayAnimation()
+    {
+        anim.SetBool("Shooting", true);
+        yield return AnimWait;
+        anim.SetBool("Shooting", false);
+        AnimationPlaying = false;
     }
 }
