@@ -30,4 +30,14 @@ public class Damage : MonoBehaviour
         }
         HealthUI.text = hp.ToString();
     }
+
+    public void Heal()
+    {
+        int HealNumb = Random.Range(0, 20);
+        if(HealNumb==1&&hp<5)
+        {
+            hp++;
+            Debug.Log("healed");
+        }
+    }
 }

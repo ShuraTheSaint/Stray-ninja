@@ -150,6 +150,21 @@ public class Upgrades : MonoBehaviour
                 Debug.Log("Smooth throw upgrade applied!");
                 SmoothThrowUpgrade();
             }
+            if (chosen.name == "Strength and Dexterity")
+            {
+                Debug.Log("Strength and Dexterity");
+                StrengthAndDexterityUpgrade();
+            }
+            if (chosen.name == "Illusionary blade")
+            {
+                Debug.Log("Illusionary blade upgrade applied!");
+                IllusionaryBladeUpgrade();
+            }
+            if (chosen.name == "Lifesteal")
+            {
+                Debug.Log("Lifesteal upgrade applied!");
+                LifestealUpgrade();
+            }
 
             // -------------------------------
         }
@@ -164,11 +179,15 @@ public class Upgrades : MonoBehaviour
     }
 
     [Header("Upgrade Tracking")]
+    public Movement playerMovement;
+    public GameObject sword;
     public bool kunai;
     public bool calculatedMurder;
     public bool tasteofblood;
     public bool smoothThrow;
     public bool shadowCore;
+    public bool Lifesteal;
+    public int strengthDamage = 0;
     public int kunaiDamage = 0;
     public int calculatedDamage = 0;
 
@@ -212,6 +231,23 @@ public class Upgrades : MonoBehaviour
     void SmoothThrowUpgrade()
     {
         smoothThrow = true;
+    }
+    
+    void StrengthAndDexterityUpgrade()
+    {
+        strengthDamage += 5; // Increase damage by 5
+        playerMovement.rotationSpeed += 100f; // Increase rotation speed by 100
+    }
+
+    void IllusionaryBladeUpgrade()
+    {
+        // --- Increase sword size ---
+        sword.transform.localScale += new Vector3(0.5f, 0.5f, 0.5f); // Increase sword size by 50%
+    }
+
+    void LifestealUpgrade()
+    {
+        Lifesteal = true;
     }
     // ---------------------------------
 }

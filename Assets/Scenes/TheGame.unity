@@ -4885,6 +4885,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
+      propertyPath: sword
+      value: 
+      objectReference: {fileID: 8720890021964820655}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
       propertyPath: LevelUp
       value: 1
       objectReference: {fileID: 0}
@@ -4893,6 +4898,11 @@ PrefabInstance:
       propertyPath: currentVariant
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 1582087370452399432}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: choiceTexts.Array.size
@@ -4931,7 +4941,7 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: SwordUpgrades.Array.data[0].name
-      value: Strenght and Dexterity
+      value: Strength and Dexterity
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}

@@ -34,6 +34,7 @@ public class Health : MonoBehaviour
         expS = GameObject.Find("Player").GetComponent<Experience>();
         move = GameObject.Find("Player")?.GetComponent<Movement>();
         up = GameObject.Find("Upgrade Manager")?.GetComponent<Upgrades>();
+
         if (fire != null)
         fire.SetActive(false);
 
@@ -78,7 +79,7 @@ public class Health : MonoBehaviour
         if (other.gameObject.CompareTag(swordTag))
         {
             if (damage.Length > 1)
-                ApplyDamage(damage[1]);
+                ApplyDamage(damage[1]+up.strengthDamage);
         }
 
         if (other.gameObject.CompareTag(spellTag))
@@ -139,6 +140,10 @@ public class Health : MonoBehaviour
             if(up.tasteofblood)
             {
                 move.Tasting();
+            }
+            if(up.Lifesteal)
+            {
+                playerDamage.Heal();
             }
             hasDied = true;
             if (xp != null && !up.shadowCore) xp.dropxpp(); else expS.AddExperience(2);

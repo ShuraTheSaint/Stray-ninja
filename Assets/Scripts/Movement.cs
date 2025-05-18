@@ -125,8 +125,18 @@ public class Movement : MonoBehaviour
 
     IEnumerator TastingCoroutine()
     {
-        speed += 0.3f;
-        yield return new WaitForSeconds(5);
-        speed -= 0.3f;
+        if (gm.isPc)
+        {
+            speed += 0.5f;
+            yield return new WaitForSeconds(5);
+            speed -= 0.5f;
+        }
+        else
+        {
+            speed += 2;
+            yield return new WaitForSeconds(5);
+            speed -= 2;
+
+        }
     }
-}
+}   
