@@ -94,12 +94,20 @@ public class Health : MonoBehaviour
 
     IEnumerator Burn()
     {
+        if (up.hell)
+        {
+            burnDuration = 10;
+        }
+        if (up.Combustion)
+        {
+            ApplyDamage(6);
+        }
         if (fire != null)
             fire.SetActive(true);
         for (int x = 1; x <= burnDuration; x++)
         {
             if (damage.Length > 2)
-                ApplyDamage(damage[2]);
+                ApplyDamage(damage[2]+up.hellDamage);
             yield return new WaitForSeconds(1);
         }
         burning = false;
@@ -144,6 +152,10 @@ public class Health : MonoBehaviour
             if(up.Lifesteal)
             {
                 playerDamage.Heal();
+            }
+            if(up.Monster)
+            {
+                playerDamage.Monster();
             }
             hasDied = true;
             if (xp != null && !up.shadowCore) xp.dropxpp(); else expS.AddExperience(2);

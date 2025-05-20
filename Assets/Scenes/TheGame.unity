@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05643dbabedde764ebfed490c830a168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 5
+  hp: 0
   gm: {fileID: 1786182976}
 --- !u!136 &46447846
 CapsuleCollider:
@@ -2707,7 +2707,6 @@ MonoBehaviour:
   gm: {fileID: 1786182976}
   spawnInterwal: {fileID: 2038963479}
   spawnInterval: 3
-  difficultyControl: 0.9
 --- !u!4 &1968371936
 Transform:
   m_ObjectHideFlags: 0
@@ -2894,9 +2893,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0dea650af6c0440adb350c924455c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnV: 0.999
+  SpawnV: 0.9
   SpawnCD: 2
-  SpawnCDICD: 10
+  SpawnCDICD: 5
   gm: {fileID: 1786182976}
 --- !u!4 &2038963480
 Transform:
@@ -3750,7 +3749,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.20846292, y: 1.9992002, z: 0.085479565}
+  m_Size: {x: 0.20846292, y: 1.9992002, z: 1.86}
   m_Center: {x: 0.00000023841858, y: 0.7094886, z: -0.000039868068}
 --- !u!4 &1105221832226416525
 Transform:
@@ -4895,6 +4894,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
+      propertyPath: hellDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
       propertyPath: currentVariant
       value: 0
       objectReference: {fileID: 0}
@@ -4951,7 +4955,7 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: SwordUpgrades.Array.data[2].name
-      value: 'Blood lust '
+      value: Shadow core
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
@@ -4966,37 +4970,37 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: SwordUpgrades.Array.data[5].name
-      value: Blood coat
+      value: Taste of blood
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: NinjitsuUpgrades.Array.data[0].name
-      value: Flames of hell
+      value: Shadow core
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: NinjitsuUpgrades.Array.data[1].name
-      value: Midnight sun
+      value: Flames of hell
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: NinjitsuUpgrades.Array.data[2].name
-      value: 'Combustion  '
+      value: Combustion
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: NinjitsuUpgrades.Array.data[3].name
-      value: 'Flames of fear '
+      value: Rising sun
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: NinjitsuUpgrades.Array.data[4].name
-      value: Warming up
+      value: Everlasting sun
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: NinjitsuUpgrades.Array.data[5].name
-      value: Fired up
+      value: Light speed
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
@@ -5046,7 +5050,7 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: SwordUpgrades.Array.data[2].description
-      value: Gain movement speed the more enemies there are
+      value: Absorb more experience through kill
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
@@ -5061,17 +5065,17 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: SwordUpgrades.Array.data[5].description
-      value: Increased damage after a kill for short time stacks
+      value: Gain movement speed after a kill for a short time
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: NinjitsuUpgrades.Array.data[0].description
-      value: Faster burn and more  damage
+      value: Absorb more experience through kill
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: NinjitsuUpgrades.Array.data[1].description
-      value: Increases the fireball size the longer it is conjured
+      value: Faster burn and more  damage
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
@@ -5081,18 +5085,17 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: NinjitsuUpgrades.Array.data[3].description
-      value: Enemies have a chance to catch on fire from a nearby enemy who is on
-        fire
+      value: Increases the fireball size the longer it is conjured
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: NinjitsuUpgrades.Array.data[4].description
-      value: Every 100 kills gain hp
+      value: Increase how long fireball stays conjured
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: NinjitsuUpgrades.Array.data[5].description
-      value: Touching yourself with fireball increases movespeed
+      value: Increased fireball speed
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
@@ -9786,7 +9789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05643dbabedde764ebfed490c830a168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 5
+  hp: 0
   gm: {fileID: 1786182976}
 --- !u!114 &7993475911876886631
 MonoBehaviour:
@@ -18092,7 +18095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05643dbabedde764ebfed490c830a168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 5
+  hp: 0
   gm: {fileID: 1786182976}
 --- !u!114 &8749011980016420754
 MonoBehaviour:

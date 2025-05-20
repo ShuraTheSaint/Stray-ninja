@@ -127,9 +127,9 @@ public class Movement : MonoBehaviour
     {
         if (gm.isPc)
         {
-            speed += 0.5f;
-            yield return new WaitForSeconds(5);
-            speed -= 0.5f;
+            speed += 0.3f;
+            yield return new WaitForSeconds(3);
+            speed -= 0.3f;
         }
         else
         {

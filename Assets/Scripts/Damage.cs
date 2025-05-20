@@ -5,7 +5,9 @@ using TMPro;
 
 public class Damage : MonoBehaviour
 {
-    public float hp;
+    int count = 0;
+    public int hp;
+    int maxhp = 5;
     public GameManager gm;
     TextMeshProUGUI HealthUI;
 
@@ -34,10 +36,23 @@ public class Damage : MonoBehaviour
     public void Heal()
     {
         int HealNumb = Random.Range(0, 20);
-        if(HealNumb==1&&hp<5)
+        if(HealNumb==1&&hp<maxhp)
         {
             hp++;
             Debug.Log("healed");
+        }
+    }
+
+    public void Monster()
+    {
+        count++;
+        if (count>=100)
+        {
+            maxhp++;
+            hp++;
+            gameObject.transform.localScale += new Vector3(0.5f, 0.5f, 0.5f); // Increase player size by 50%
+            count -= 100;
+            Debug.Log("Monster!");
         }
     }
 }

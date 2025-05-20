@@ -7,7 +7,8 @@ public class Fireball : MonoBehaviour
     MagicAttack wand;
     public float fixedYa = 0f; // Fixed Y position for the object
     public float followSpeed = 2000f; // Speed at which the object follows the target
-    public Joystick rotationJoystick; // Reference to the rotation joystick
+    Joystick rotationJoystick; // Reference to the rotation joystick
+    private static Upgrades up; // Static cache
 
     private Camera mainCamera;
     // Movement threshold: if the squared distance is below this value, we do not move.
@@ -15,6 +16,7 @@ public class Fireball : MonoBehaviour
 
     void Awake()
     {
+        if (up == null) up = GameObject.Find("Upgrade Manager")?.GetComponent<Upgrades>();
         // Get a reference to the MagicAttack script on the Player.
         wand = GameObject.Find("Player").GetComponent<MagicAttack>();
         rigidb = GetComponent<Rigidbody>();
@@ -32,12 +34,24 @@ public class Fireball : MonoBehaviour
             rotationJoystick = GameObject.Find("Aim").GetComponent<Joystick>();
         }
         StartCoroutine(Fire());
+        if (up.MidnightSun)
+        {
+            StartCoroutine(risingSun());
+        }
+    }
+
+    IEnumerator risingSun()
+    {
+        Debug.Log("NewHour");
+        yield return new WaitForSeconds(1);
+        gameObject.transform.localScale += new Vector3(2f, 2f, 2f); // Increase size by 50%
+        StartCoroutine(risingSun());
     }
 
     IEnumerator Fire()
     {
         // Wait 5 seconds before extinguishing the fireball.
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(5+up.SunDuration);
         Extinguish();
     }
 
@@ -55,7 +69,6 @@ public class Fireball : MonoBehaviour
         {
             return;
         }
-
         // Check if MagicAttack indicated the fireball should be extinguished.
         if (wand.shouldExtinguish == true)
         {
@@ -78,7 +91,7 @@ public class Fireball : MonoBehaviour
                 if (offset.sqrMagnitude > movementThresholdSqr)
                 {
                     Vector3 direction = offset.normalized;
-                    Vector3 step = direction * followSpeed * Time.deltaTime;
+                    Vector3 step = direction * (followSpeed + up.LightSpeed) * Time.deltaTime;
                     rigidb.MovePosition(transform.position + step);
                 }
             }
@@ -92,7 +105,7 @@ public class Fireball : MonoBehaviour
             if (direction.magnitude > 0.1f)
             {
                 direction = direction.normalized;
-                Vector3 step = direction * followSpeed * Time.deltaTime;
+                Vector3 step = direction * (followSpeed + up.LightSpeed) * Time.deltaTime;
                 rigidb.MovePosition(transform.position + step);
             }
         }

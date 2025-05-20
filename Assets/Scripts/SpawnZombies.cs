@@ -10,7 +10,6 @@ public class SpawnZombies : MonoBehaviour
     public DifficultyManager spawnInterwal;
     bool start = true;
     public float spawnInterval;
-    public float difficultyControl = 0.9f;
     Vector3 xoffset = new Vector3(30, 0, 0);
     Vector3 yoffset = new Vector3(0, 0, 30);
     // Start is called before the first frame update

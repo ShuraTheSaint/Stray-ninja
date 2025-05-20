@@ -165,6 +165,37 @@ public class Upgrades : MonoBehaviour
                 Debug.Log("Lifesteal upgrade applied!");
                 LifestealUpgrade();
             }
+            if (chosen.name == "Monster")
+            {
+                Debug.Log("Monster upgrade applied!");
+                MonsterUpgrade();
+            }
+            if (chosen.name == "Flames of hell")
+            {
+                Debug.Log("Flames of hell upgrade applied!");
+                FlamesOfHellUpgrade();
+            }
+            if (chosen.name == "Rising sun")
+            {
+                Debug.Log("Rising sun upgrade applied!");
+                MidnightSunUpgrade();
+            }
+            if (chosen.name == "Combustion")
+            {
+                Debug.Log("Combustion upgrade applied!");
+                CombustionUpgrade();
+            }
+            if (chosen.name == "Everlasting sun")
+            {
+                Debug.Log("Everlasting sun upgrade applied!");
+                EverlastingSunUpgrade();
+            }
+            if (chosen.name == "Light speed")
+            {
+                Debug.Log("Light speed upgrade applied!");
+                LightSpeedUpgrade();
+            }
+            
 
             // -------------------------------
         }
@@ -187,9 +218,16 @@ public class Upgrades : MonoBehaviour
     public bool smoothThrow;
     public bool shadowCore;
     public bool Lifesteal;
+    public bool Monster;
+    public bool hell;
+    public bool Combustion;
+    public bool MidnightSun;
     public int strengthDamage = 0;
     public int kunaiDamage = 0;
     public int calculatedDamage = 0;
+    public int hellDamage = 0;
+    public int SunDuration = 0;
+    public int LightSpeed = 0;
 
     // --- Fast Hands upgrade tracking ---
     [Header("Attack Speed Upgrade")]
@@ -248,6 +286,32 @@ public class Upgrades : MonoBehaviour
     void LifestealUpgrade()
     {
         Lifesteal = true;
+    }
+
+    void MonsterUpgrade()
+    { 
+        Monster = true;
+    }
+    void FlamesOfHellUpgrade()
+    { 
+        hell = true;
+        hellDamage = 2;
+    }
+    void MidnightSunUpgrade()
+    {
+        MidnightSun = true;
+    }
+    void CombustionUpgrade()
+    {
+        Combustion = true;
+    }
+    void EverlastingSunUpgrade()
+    {
+        SunDuration = 10;
+    }
+    void LightSpeedUpgrade()
+    { 
+        LightSpeed = 10;
     }
     // ---------------------------------
 }
