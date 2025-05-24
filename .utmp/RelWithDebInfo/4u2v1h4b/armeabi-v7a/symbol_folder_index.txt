@@ -1,1 +1,0 @@
-C:\Users\IT\Stray ninja\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\4u2v1h4b\obj\armeabi-v7a
