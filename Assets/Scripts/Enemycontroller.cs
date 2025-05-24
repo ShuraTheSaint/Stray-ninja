@@ -10,9 +10,18 @@ public class Enemycontroller : MonoBehaviour
     public NavMeshAgent agent;
     GameManager gm;
     GameObject player;
+    public Animator anim;
     void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        if (gameObject.name == "FastEnemy(Clone)")
+        {
+            anim.speed = 2f; // Set animation speed to 2x
+        }
+        else if (gameObject.name == "StrongEnemy(Clone)")
+        {
+            anim.speed = 0.75f; // Set animation speed to 0.75x
+        }
     }
 
     void Update()

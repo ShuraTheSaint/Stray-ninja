@@ -2368,7 +2368,7 @@ MonoBehaviour:
   - {fileID: 8170153793215889870}
   - {fileID: 8170153793362325373}
   GameOn: 0
-  isPc: 1
+  isPc: 0
 --- !u!4 &1786182977
 Transform:
   m_ObjectHideFlags: 0
@@ -2704,9 +2704,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombiePrefab: {fileID: 9131462361592512381, guid: 0345a2573271ca544ab586406ba632dd,
     type: 3}
+  StrongerZombiePrefab: {fileID: 9131462361592512381, guid: 73299ae151a1af641aa1a20acb19de33,
+    type: 3}
+  FasterZombiePrefab: {fileID: 9131462361592512381, guid: 56450de15d6c46b49ac92acffafbcfe9,
+    type: 3}
   gm: {fileID: 1786182976}
   spawnInterwal: {fileID: 2038963479}
-  spawnInterval: 3
 --- !u!4 &1968371936
 Transform:
   m_ObjectHideFlags: 0
@@ -2893,9 +2896,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0dea650af6c0440adb350c924455c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnV: 0.9
+  SpawnCoolDownDivider: 0.75
   SpawnCD: 2
-  SpawnCDICD: 5
+  SpawnCDIncreaseCD: 20
   gm: {fileID: 1786182976}
 --- !u!4 &2038963480
 Transform:

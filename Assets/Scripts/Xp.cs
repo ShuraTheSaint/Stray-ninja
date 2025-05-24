@@ -7,29 +7,29 @@ public class Xp : MonoBehaviour
     public GameObject xpCollectiblePrefab;
     public Transform SpawnPoint;
 
-    public float speed = 10f;
-    
-
     // Start is called before the first frame update
     void Start()
     {
     }
 
-    public void dropxpp()
+    public void dropxpp(int amount)
     {
-        DropXP();
-    }
+        for (int i = 0; i < amount; i++)
+        {
+            float radius = 0.5f; // Adjust for how far apart you want the drops
+            Vector2 randomCircle = Random.insideUnitCircle * radius;
+            Vector3 randomOffset;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+            if (i > 0)
+            {
+                randomOffset = new Vector3(randomCircle.x, 1, randomCircle.y);
+            }
+            else
+            {
+                randomOffset = new Vector3(0, 1, 0);
+            }
 
-    Vector3 offset = new Vector3(0, 1, 0);
-
-    private void DropXP()
-    {
-       GameObject xp = Instantiate(xpCollectiblePrefab, SpawnPoint.position + offset, SpawnPoint.rotation);       
+            GameObject xp = Instantiate(xpCollectiblePrefab, SpawnPoint.position + randomOffset, SpawnPoint.rotation);
+        }
     }
 }

@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     public int[] damage; // [0]=bullet, [1]=sword, [2]=burn
     public int hpoints = 10;
     public Xp xp; // Assign in Inspector
-    public int burnDuration = 5;
+    int burnDuration = 5;
 
     private bool isPlayerInRange = false;
     private bool isCoroutineRunning = false;
@@ -87,6 +87,10 @@ public class Health : MonoBehaviour
             if (!burning)
             {
                 StartCoroutine(Burn());
+                if (up.Combustion)
+                {
+                    ApplyDamage(6);
+                }
                 burning = true;
             }
         }
@@ -97,10 +101,6 @@ public class Health : MonoBehaviour
         if (up.hell)
         {
             burnDuration = 10;
-        }
-        if (up.Combustion)
-        {
-            ApplyDamage(6);
         }
         if (fire != null)
             fire.SetActive(true);
@@ -158,8 +158,28 @@ public class Health : MonoBehaviour
                 playerDamage.Monster();
             }
             hasDied = true;
-            if (xp != null && !up.shadowCore) xp.dropxpp(); else expS.AddExperience(2);
-                Destroy(gameObject);
+            if (xp != null)
+            {
+                if (gameObject.name == "FastEnemy(Clone)")
+                {
+                    if(!up.shadowCore) xp.dropxpp(3);
+                    else expS.AddExperience(5);
+                }
+                else if (gameObject.name == "StrongEnemy(Clone)")
+                {
+                    if (!up.shadowCore) xp.dropxpp(3);
+                    else expS.AddExperience(3);
+                }
+                else if (!up.shadowCore)
+                {
+                    xp.dropxpp(1);
+                }
+                else
+                {
+                    expS.AddExperience(2);
+                }
+            }
+            Destroy(gameObject);
         }
     }
 

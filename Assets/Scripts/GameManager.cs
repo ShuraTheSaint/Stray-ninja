@@ -4,11 +4,16 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public GameObject[] UI;
-    public bool GameOn = true;
+    public bool GameOn = false;
     public bool isPc = true;
 
     public void Start()
     {
+        if(Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            isPc = false;
+        }else isPc = true;
+
         Application.targetFrameRate = 120;
 
         // Defensive: Only set UI elements if they exist

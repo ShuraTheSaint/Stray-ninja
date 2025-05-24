@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DifficultyManager : MonoBehaviour
 {
-    public float SpawnV;
+    public float SpawnCoolDownDivider;
     public float SpawnCD;
-    public float SpawnCDICD;
+    public float SpawnCDIncreaseCD;
     public GameManager gm;
     void Start()
     {
@@ -15,10 +15,10 @@ public class DifficultyManager : MonoBehaviour
    
     IEnumerator SpawnControl()
     {
-        yield return new WaitForSeconds(SpawnCDICD);
+        yield return new WaitForSeconds(SpawnCDIncreaseCD);
         if (gm.GameOn == true)
         {
-            SpawnCD = SpawnCD * SpawnV;
+            SpawnCD = SpawnCD * SpawnCoolDownDivider;
         }
         StartCoroutine(SpawnControl());
     }
