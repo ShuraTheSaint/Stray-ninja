@@ -162,13 +162,13 @@ public class Health : MonoBehaviour
             {
                 if (gameObject.name == "FastEnemy(Clone)")
                 {
-                    if(!up.shadowCore) xp.dropxpp(3);
-                    else expS.AddExperience(5);
+                    if(!up.shadowCore) xp.dropxpp(2);
+                    else expS.AddExperience(4);
                 }
                 else if (gameObject.name == "StrongEnemy(Clone)")
                 {
-                    if (!up.shadowCore) xp.dropxpp(3);
-                    else expS.AddExperience(3);
+                    if (!up.shadowCore) xp.dropxpp(4);
+                    else expS.AddExperience(6);
                 }
                 else if (!up.shadowCore)
                 {

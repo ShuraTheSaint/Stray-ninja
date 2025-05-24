@@ -5,6 +5,7 @@ public class Movement : MonoBehaviour
 {
     [Header("Movement Settings")]
     public float speed; // Maximum speed the player can reach
+    public float mobileSpeed = 5f; // Speed for mobile controls
     public float rotationSpeed = 720f; // Speed at which the player rotates (degrees per second)
     public Joystick movementJoystick; // Joystick for movement
     public Joystick rotationJoystick; // Joystick for rotation
@@ -62,7 +63,7 @@ public class Movement : MonoBehaviour
         else
         {
             // Directly set velocity for the joystick movement
-            rb.linearVelocity = joystickMovementInput * speed;
+            rb.linearVelocity = joystickMovementInput * speed * 0.7f * mobileSpeed;
         }
     }
 
@@ -127,14 +128,14 @@ public class Movement : MonoBehaviour
     {
         if (gm.isPc)
         {
-            speed += 0.3f;
+            speed += 0.2f;
             yield return new WaitForSeconds(3);
-            speed -= 0.3f;
+            speed -= 0.2f;
         }
         else
         {
             speed += 2;
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(3);
             speed -= 2;
 
         }
