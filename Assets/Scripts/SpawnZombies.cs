@@ -10,6 +10,7 @@ public class SpawnZombies : MonoBehaviour
     public GameObject FasterZombiePrefab;
     public GameManager gm;
     public DifficultyManager spawnInterwal;
+    public int zombieCount = 0;
     float spawnInterval;
     bool gameBegun = false;
 
@@ -32,25 +33,29 @@ public class SpawnZombies : MonoBehaviour
     {
         if (gm.GameOn == true)
         {
-            // Random angle and distance for spawn position
-            float angle = Random.Range(0f, 360f);
-            float radius = 40f; // Use the same as xoffset/yoffset magnitude
-            Vector3 offset = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * radius;
-            Vector3 spawnPos = spawnPoint.position + offset;
+            if (zombieCount <= 100) // Limit the number of zombies to prevent performance issues
+            {
+                // Random angle and distance for spawn position
+                float angle = Random.Range(0f, 360f);
+                float radius = 40f; // Use the same as xoffset/yoffset magnitude
+                Vector3 offset = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * radius;
+                Vector3 spawnPos = spawnPoint.position + offset;
 
-            // Randomly pick enemy type: 0=normal, 1=strong, 2=fast
-            int enemyType = Random.Range(0, 10);
-            GameObject prefabToSpawn = zombiePrefab;
-            if (enemyType == 1)
-                prefabToSpawn = StrongerZombiePrefab;
-            else if (enemyType == 2)
-                prefabToSpawn = FasterZombiePrefab;
+                // Randomly pick enemy type: 0=normal, 1=strong, 2=fast
+                int enemyType = Random.Range(0, 10);
+                GameObject prefabToSpawn = zombiePrefab;
+                if (enemyType == 1)
+                    prefabToSpawn = StrongerZombiePrefab;
+                else if (enemyType == 2)
+                    prefabToSpawn = FasterZombiePrefab;
 
-            // Make zombie face the player
-            Vector3 directionToPlayer = (spawnPoint.position - spawnPos).normalized;
-            Quaternion lookRotation = Quaternion.LookRotation(directionToPlayer, Vector3.up);
+                // Make zombie face the player
+                Vector3 directionToPlayer = (spawnPoint.position - spawnPos).normalized;
+                Quaternion lookRotation = Quaternion.LookRotation(directionToPlayer, Vector3.up);
 
-            Instantiate(prefabToSpawn, spawnPos, lookRotation);
+                Instantiate(prefabToSpawn, spawnPos, lookRotation);
+                zombieCount++;
+            }
         }
         yield return new WaitForSeconds(spawnInterval);
         StartCoroutine(SpawnObjectPeriodically());

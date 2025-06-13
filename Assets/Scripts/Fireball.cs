@@ -6,7 +6,7 @@ public class Fireball : MonoBehaviour
     public Rigidbody rigidb;
     MagicAttack wand;
     public float fixedYa = 0f; // Fixed Y position for the object
-    public float followSpeed = 2000f; // Speed at which the object follows the target
+    public float followSpeed; // Speed at which the object follows the target
     Joystick rotationJoystick; // Reference to the rotation joystick
     private static Upgrades up; // Static cache
 
@@ -43,8 +43,8 @@ public class Fireball : MonoBehaviour
     IEnumerator risingSun()
     {
         Debug.Log("NewHour");
-        yield return new WaitForSeconds(1);
-        gameObject.transform.localScale += new Vector3(2f, 2f, 2f); // Increase size by 50%
+        yield return new WaitForSeconds(0.5f);
+        gameObject.transform.localScale += new Vector3(0.15f, 0.15f, 0.15f); // Increase size by 50%
         StartCoroutine(risingSun());
     }
 
@@ -91,7 +91,7 @@ public class Fireball : MonoBehaviour
                 if (offset.sqrMagnitude > movementThresholdSqr)
                 {
                     Vector3 direction = offset.normalized;
-                    Vector3 step = direction * (followSpeed + up.LightSpeed) * Time.deltaTime;
+                    Vector3 step = direction * (followSpeed) * Time.deltaTime;
                     rigidb.MovePosition(transform.position + step);
                 }
             }
@@ -105,7 +105,7 @@ public class Fireball : MonoBehaviour
             if (direction.magnitude > 0.1f)
             {
                 direction = direction.normalized;
-                Vector3 step = direction * (followSpeed + up.LightSpeed) * Time.deltaTime;
+                Vector3 step = direction * (followSpeed) * Time.deltaTime;
                 rigidb.MovePosition(transform.position + step);
             }
         }

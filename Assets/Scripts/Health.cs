@@ -26,6 +26,7 @@ public class Health : MonoBehaviour
     // Cached player and Damage reference
     private GameObject player;
     private Damage playerDamage;
+    private static SpawnZombies spawnZombies;
     Movement move;
     Experience expS;
 
@@ -34,6 +35,7 @@ public class Health : MonoBehaviour
         expS = GameObject.Find("Player").GetComponent<Experience>();
         move = GameObject.Find("Player")?.GetComponent<Movement>();
         up = GameObject.Find("Upgrade Manager")?.GetComponent<Upgrades>();
+        if (spawnZombies == null) spawnZombies = GameObject.Find("Spawner")?.GetComponent<SpawnZombies>();
 
         if (fire != null)
         fire.SetActive(false);
@@ -179,6 +181,7 @@ public class Health : MonoBehaviour
                     expS.AddExperience(2);
                 }
             }
+            spawnZombies.zombieCount--;
             Destroy(gameObject);
         }
     }

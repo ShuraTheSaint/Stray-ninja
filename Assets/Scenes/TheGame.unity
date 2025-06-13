@@ -1524,7 +1524,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 2555075820
-  m_fontColor: {r: 0.9245283, g: 0.3593419, b: 0.2921858, a: 0.59607846}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0.59607846}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4939,7 +4939,7 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: NinjitsuUpgrades.Array.size
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}

@@ -190,13 +190,6 @@ public class Upgrades : MonoBehaviour
                 Debug.Log("Everlasting sun upgrade applied!");
                 EverlastingSunUpgrade();
             }
-            if (chosen.name == "Light speed")
-            {
-                Debug.Log("Light speed upgrade applied!");
-                LightSpeedUpgrade();
-            }
-            
-
             // -------------------------------
         }
 
@@ -227,7 +220,6 @@ public class Upgrades : MonoBehaviour
     public int calculatedDamage = 0;
     public int hellDamage = 0;
     public int SunDuration = 0;
-    public int LightSpeed = 0;
 
     // --- Fast Hands upgrade tracking ---
     [Header("Attack Speed Upgrade")]
@@ -308,10 +300,6 @@ public class Upgrades : MonoBehaviour
     void EverlastingSunUpgrade()
     {
         SunDuration = 10;
-    }
-    void LightSpeedUpgrade()
-    { 
-        LightSpeed = 10;
     }
     // ---------------------------------
 }
