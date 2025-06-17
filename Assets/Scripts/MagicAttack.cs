@@ -10,6 +10,7 @@ public class MagicAttack : MonoBehaviour
     public int fireballCd = 5;
     public int tempCD;
     public bool afterLevelUp = false;
+    public bool skipNextExtinguish = false; // <--- Add this flag
     public GameObject bullet;
     public Transform gun;
     public Transform player;
@@ -52,7 +53,9 @@ public class MagicAttack : MonoBehaviour
                 // After leveling up, skip cooldown and allow immediate shooting
                 coolDown = false;
                 canShoot = true;
+                tempCD = fireballCd; // Reset tempCD so next cooldown is correct
                 afterLevelUp = false; // Reset afterLevelUp here to avoid repeated skipping
+                skipNextExtinguish = true; // <--- Set flag so next fireball doesn't extinguish instantly
             }
         }
     }
@@ -102,12 +105,20 @@ public class MagicAttack : MonoBehaviour
     {
         while (tempCD > 0)
         {
+            // Exit early if a level up happens during cooldown
+            if (afterLevelUp)
+            {
+                tempCD = fireballCd;
+                yield break;
+            }
             CD.text = tempCD.ToString();
             yield return new WaitForSeconds(1);
             tempCD--;
         }
         cdtext.SetActive(false);
         tempCD = fireballCd;
-        canShoot = true;
+        // Only set canShoot if not interrupted by level up
+        if (!afterLevelUp)
+            canShoot = true;
     }
 }

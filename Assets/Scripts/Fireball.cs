@@ -62,6 +62,12 @@ public class Fireball : MonoBehaviour
 
     void Extinguish()
     {
+        // Prevent extinguish if skipNextExtinguish is set (extra safety)
+        if (wand.skipNextExtinguish)
+        {
+            wand.skipNextExtinguish = false;
+            return;
+        }
         Debug.Log("Extinguishing fireball: " + gameObject.name);
         wand.coolDown = true;
         Destroy(gameObject);
@@ -80,12 +86,22 @@ public class Fireball : MonoBehaviour
         {
             return;
         }
+        // --- Prevent instant extinguish after level up ---
         if (wand.shouldExtinguish == true)
         {
             if (!wand.afterLevelUp)
             {
-                wand.shouldExtinguish = false;
-                Extinguish();
+                if (wand.skipNextExtinguish)
+                {
+                    // Skip extinguish for this fireball, reset flag
+                    wand.skipNextExtinguish = false;
+                    wand.shouldExtinguish = false;
+                }
+                else
+                {
+                    wand.shouldExtinguish = false;
+                    Extinguish();
+                }
             }
         }
 
