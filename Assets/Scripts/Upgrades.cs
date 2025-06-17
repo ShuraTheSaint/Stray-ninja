@@ -22,16 +22,20 @@ public class Upgrades : MonoBehaviour
     public List<UpgradesBlueprint> ShurikenUpgrades;
     public List<UpgradesBlueprint> SwordUpgrades;
     public GameObject selection;
+    public MagicAttack magicAttack; // Reference to MagicAttack for cooldown management
     public TextMeshProUGUI[] choiceTexts;
     private List<UpgradesBlueprint> currentChoices = new List<UpgradesBlueprint>();
 
     // --- Added for queuing level-ups ---
     private int pendingLevelUps = 0;
     private bool isSelectingUpgrade = false;
+    public bool levelingUp = false;
     // -----------------------------------
 
     public void NewLevel()
     {
+        magicAttack.afterLevelUp = true;
+        levelingUp = true;
         // --- Prevent level up if no upgrades are available ---
         if (GetCurrentVariantUpgrades().Count == 0)
         {
@@ -108,8 +112,9 @@ public class Upgrades : MonoBehaviour
     {
         Time.timeScale = 1f; // Unpause the game
         selection.SetActive(false);
-        // --- Reset selection state ---
         isSelectingUpgrade = false;
+        magicAttack.afterLevelUp = false;
+        magicAttack.canShoot = true; // Ensure fireball is ready to shoot after leveling up
         // ----------------------------
 
         if (choiceIndex < currentChoices.Count)

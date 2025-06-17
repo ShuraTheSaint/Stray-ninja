@@ -8,7 +8,8 @@ public class MagicAttack : MonoBehaviour
     public bool shouldExtinguish = false;
     public bool coolDown = false;
     public int fireballCd = 5;
-    private int tempCD;
+    public int tempCD;
+    public bool afterLevelUp = false;
     public GameObject bullet;
     public Transform gun;
     public Transform player;
@@ -40,9 +41,19 @@ public class MagicAttack : MonoBehaviour
         // Start the cooldown process if triggered.
         if (coolDown)
         {
-            coolDown = false;
-            cdtext.SetActive(true);
-            StartCoroutine(CoolDown());
+            if (!afterLevelUp)
+            {
+                coolDown = false;
+                cdtext.SetActive(true);
+                StartCoroutine(CoolDown());
+            }
+            else
+            {
+                // After leveling up, skip cooldown and allow immediate shooting
+                coolDown = false;
+                canShoot = true;
+                afterLevelUp = false; // Reset afterLevelUp here to avoid repeated skipping
+            }
         }
     }
 

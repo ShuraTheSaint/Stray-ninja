@@ -2368,7 +2368,7 @@ MonoBehaviour:
   - {fileID: 8170153793215889870}
   - {fileID: 8170153793362325373}
   GameOn: 0
-  isPc: 1
+  isPc: 0
 --- !u!4 &1786182977
 Transform:
   m_ObjectHideFlags: 0
@@ -2710,6 +2710,7 @@ MonoBehaviour:
     type: 3}
   gm: {fileID: 1786182976}
   spawnInterwal: {fileID: 2038963479}
+  zombieCount: 0
 --- !u!4 &1968371936
 Transform:
   m_ObjectHideFlags: 0
@@ -4901,6 +4902,11 @@ PrefabInstance:
       propertyPath: hellDamage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
+        type: 3}
+      propertyPath: magicAttack
+      value: 
+      objectReference: {fileID: 7923342502805994008}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: currentVariant
@@ -8857,6 +8863,7 @@ MonoBehaviour:
   shouldExtinguish: 0
   coolDown: 0
   fireballCd: 5
+  tempCD: 0
   bullet: {fileID: 1187546458036812, guid: 2c62a21a86fb9cc439d52734d04b5031, type: 3}
   gun: {fileID: 1498119580469503426}
   player: {fileID: 8749011980016420756}
@@ -18084,7 +18091,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 12.5
-  mobileSpeed: 1.3
+  mobileSpeed: 1.5
   rotationSpeed: 300
   movementJoystick: {fileID: 8170153793215889866}
   rotationJoystick: {fileID: 8170153793362325369}

@@ -152,8 +152,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidb: {fileID: -1551904216657510320}
-  fixedYa: 0
   followSpeed: 35
+  aimAssistRadius: 7
+  assistAngleThreshold: 100
+  aimAssistStrength: 0.75
 --- !u!1001 &6266214402355625136
 PrefabInstance:
   m_ObjectHideFlags: 0
