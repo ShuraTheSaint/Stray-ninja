@@ -4945,7 +4945,7 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: NinjitsuUpgrades.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
@@ -5010,7 +5010,7 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: NinjitsuUpgrades.Array.data[5].name
-      value: Light speed
+      value: Short respite
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
@@ -5105,7 +5105,7 @@ PrefabInstance:
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
       propertyPath: NinjitsuUpgrades.Array.data[5].description
-      value: Increased fireball speed
+      value: 'Reduces the cooldown '
       objectReference: {fileID: 0}
     - target: {fileID: 5071786372917715507, guid: 1226a1ca5f3ac904cb9f7f829e1bf1f7,
         type: 3}
@@ -8859,11 +8859,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc069f771eba974c964919051bc53da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  up: {fileID: 0}
   canShoot: 1
   shouldExtinguish: 0
   coolDown: 0
-  fireballCd: 5
+  onCooldown: 0
+  fireballCd: 6
   tempCD: 0
+  afterLevelUp: 0
   bullet: {fileID: 1187546458036812, guid: 2c62a21a86fb9cc439d52734d04b5031, type: 3}
   gun: {fileID: 1498119580469503426}
   player: {fileID: 8749011980016420756}

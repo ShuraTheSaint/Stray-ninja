@@ -45,7 +45,6 @@ public class Fireball : MonoBehaviour
 
     IEnumerator risingSun()
     {
-        Debug.Log("NewHour");
         yield return new WaitForSeconds(0.5f);
         gameObject.transform.localScale += new Vector3(0.15f, 0.15f, 0.15f);
         StartCoroutine(risingSun());
@@ -53,22 +52,12 @@ public class Fireball : MonoBehaviour
 
     IEnumerator Fire()
     {
-        if (!wand.afterLevelUp)
-        {
-            yield return new WaitForSeconds(5 + up.SunDuration);
-            Extinguish();
-        }
+        yield return new WaitForSeconds(5 + up.SunDuration);
+        Extinguish();
     }
 
     void Extinguish()
     {
-        // Prevent extinguish if skipNextExtinguish is set (extra safety)
-        if (wand.skipNextExtinguish)
-        {
-            wand.skipNextExtinguish = false;
-            return;
-        }
-        Debug.Log("Extinguishing fireball: " + gameObject.name);
         wand.coolDown = true;
         Destroy(gameObject);
     }
@@ -77,32 +66,17 @@ public class Fireball : MonoBehaviour
     {
         if (up.levelingUp == true)
         {
-            // Prevent extinguishing and cooldown trigger during level up
-            Destroy(gameObject);
-            up.levelingUp = false;
+            Extinguish();
             return;
         }
         if (Time.timeSinceLevelLoad < 0.1f)
         {
             return;
         }
-        // --- Prevent instant extinguish after level up ---
         if (wand.shouldExtinguish == true)
         {
-            if (!wand.afterLevelUp)
-            {
-                if (wand.skipNextExtinguish)
-                {
-                    // Skip extinguish for this fireball, reset flag
-                    wand.skipNextExtinguish = false;
-                    wand.shouldExtinguish = false;
-                }
-                else
-                {
-                    wand.shouldExtinguish = false;
-                    Extinguish();
-                }
-            }
+            wand.shouldExtinguish = false;
+            Extinguish();
         }
 
         Vector3 inputDirection = Vector3.zero;
@@ -220,7 +194,6 @@ public class Fireball : MonoBehaviour
             if (currentAssistTarget == other.transform)
             {
                 currentAssistTarget = null;
-                Debug.Log("Assist target removed: " + other.transform.name);
             }
         }
     }

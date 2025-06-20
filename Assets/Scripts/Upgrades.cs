@@ -34,15 +34,14 @@ public class Upgrades : MonoBehaviour
 
     public void NewLevel()
     {
-        magicAttack.afterLevelUp = true;
-        levelingUp = true;
         // --- Prevent level up if no upgrades are available ---
         if (GetCurrentVariantUpgrades().Count == 0)
         {
-            Debug.Log("No more upgrades available. Cannot level up.");
             return;
         }
         // -----------------------------------------------------
+        magicAttack.afterLevelUp = true;
+        levelingUp = true;
 
         // --- Modified to queue level-ups ---
         if (isSelectingUpgrade)
@@ -73,7 +72,6 @@ public class Upgrades : MonoBehaviour
         // --- Prevent level up if no upgrades are available ---
         if (GetCurrentVariantUpgrades().Count == 0)
         {
-            Debug.Log("No more upgrades available. Cannot level up.");
             return;
         }
         // --- Set selection state ---
@@ -110,12 +108,15 @@ public class Upgrades : MonoBehaviour
 
     void ApplyUpgrade(int choiceIndex)
     {
+        levelingUp = false;
+        magicAttack.afterLevelUp = false;
+        if (!magicAttack.onCooldown)
+        {
+            magicAttack.canShoot = true; // Allow shooting again after level up
+        }
         Time.timeScale = 1f; // Unpause the game
         selection.SetActive(false);
         isSelectingUpgrade = false;
-        magicAttack.afterLevelUp = false;
-        magicAttack.canShoot = true; // Ensure fireball is ready to shoot after leveling up
-        // ----------------------------
 
         if (choiceIndex < currentChoices.Count)
         {
@@ -123,77 +124,66 @@ public class Upgrades : MonoBehaviour
             List<UpgradesBlueprint> variantUpgrades = GetCurrentVariantUpgrades();
             variantUpgrades.Remove(chosen);
 
-            Debug.Log("Chosen upgrade: " + chosen.name);
             if (chosen.name == "Kunai")
             {
-                Debug.Log("Kunai upgrade applied!");
                 kunaiUpgrade();
             }
             // --- Fast Hands upgrade check ---
             if (chosen.name == "Fast hands")
             {
-                Debug.Log("Fast Hands upgrade applied!");
                 FastHandsUpgrade();
             }
             if (chosen.name == "Calculated murder")
             {
-                Debug.Log("Calculated murder upgrade applied!");
                 CalculatedMurderUpgrade();
             }
             if (chosen.name == "Taste of blood")
             {
-                Debug.Log("Taste of blood upgrade applied!");
                 TasteofbloodUpgrade();
             }
             if (chosen.name == "Shadow core")
             {
-                Debug.Log("Shadow core upgrade applied!");
                 ShadowCoreUpgrade();
             }
             if (chosen.name == "Smooth throw")
             {
-                Debug.Log("Smooth throw upgrade applied!");
                 SmoothThrowUpgrade();
             }
             if (chosen.name == "Strength and Dexterity")
             {
-                Debug.Log("Strength and Dexterity");
                 StrengthAndDexterityUpgrade();
             }
             if (chosen.name == "Illusionary blade")
             {
-                Debug.Log("Illusionary blade upgrade applied!");
                 IllusionaryBladeUpgrade();
             }
             if (chosen.name == "Lifesteal")
             {
-                Debug.Log("Lifesteal upgrade applied!");
                 LifestealUpgrade();
             }
             if (chosen.name == "Monster")
             {
-                Debug.Log("Monster upgrade applied!");
                 MonsterUpgrade();
             }
             if (chosen.name == "Flames of hell")
             {
-                Debug.Log("Flames of hell upgrade applied!");
                 FlamesOfHellUpgrade();
             }
             if (chosen.name == "Rising sun")
             {
-                Debug.Log("Rising sun upgrade applied!");
                 MidnightSunUpgrade();
             }
             if (chosen.name == "Combustion")
             {
-                Debug.Log("Combustion upgrade applied!");
                 CombustionUpgrade();
             }
             if (chosen.name == "Everlasting sun")
             {
-                Debug.Log("Everlasting sun upgrade applied!");
                 EverlastingSunUpgrade();
+            }
+            if(chosen.name == "Short respite")
+            {
+                ShortRespiteUpgrade();
             }
             // -------------------------------
         }
@@ -225,6 +215,7 @@ public class Upgrades : MonoBehaviour
     public int calculatedDamage = 0;
     public int hellDamage = 0;
     public int SunDuration = 0;
+    public int shortRespite = 0; // Placeholder for Short Respite upgrade
 
     // --- Fast Hands upgrade tracking ---
     [Header("Attack Speed Upgrade")]
@@ -235,14 +226,12 @@ public class Upgrades : MonoBehaviour
     {
         kunai = true;
         kunaiDamage = 1;
-        Debug.Log("Attack damage increased!");
     }
 
     // --- Fast Hands upgrade effect ---
     void FastHandsUpgrade()
     {
         attackSpeed += 1f; // Increase attack speed by 100%
-        Debug.Log("Attack speed increased!");
     }
 
     void CalculatedMurderUpgrade()
@@ -250,8 +239,6 @@ public class Upgrades : MonoBehaviour
         calculatedMurder = true;
         attackSpeed -= 0.9f; // Decrease attack speed by 90%
         calculatedDamage += 10; // Increase damage by 10
-        Debug.Log("Attack speed Decreased!");
-        Debug.Log("Attack damage increased!");
     }
     void TasteofbloodUpgrade()
     {
@@ -305,6 +292,11 @@ public class Upgrades : MonoBehaviour
     void EverlastingSunUpgrade()
     {
         SunDuration = 10;
+    }
+
+    void ShortRespiteUpgrade()
+    {
+        shortRespite = 3; // Increase short respite duration by 3 seconds
     }
     // ---------------------------------
 }
