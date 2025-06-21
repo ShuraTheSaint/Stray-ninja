@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     public Joystick rotationJoystick; // Joystick for rotation
     public GameManager gm; // Reference to the GameManager
 
+    int count = 0;
     private Rigidbody rb; // Reference to the player's Rigidbody
     private Vector3 pcMovementInput; // Stores PC input direction
     private Vector3 joystickMovementInput; // Stores joystick input direction
@@ -128,16 +129,25 @@ public class Movement : MonoBehaviour
     {
         if (gm.isPc)
         {
-            speed += 0.2f;
-            yield return new WaitForSeconds(3);
-            speed -= 0.2f;
+            if ( count <= 5 )
+            {
+                count++;
+                speed += 0.2f;
+                yield return new WaitForSeconds(3);
+                speed -= 0.2f;
+                count--;
+            }
         }
         else
         {
-            speed += 2;
-            yield return new WaitForSeconds(3);
-            speed -= 2;
-
+            if ( count <= 5)
+            {
+                count++;
+                speed += 2;
+                yield return new WaitForSeconds(3);
+                speed -= 2;
+                count--;
+            }
         }
     }
 }   

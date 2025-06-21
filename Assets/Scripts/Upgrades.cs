@@ -21,7 +21,7 @@ public class Upgrades : MonoBehaviour
     public List<UpgradesBlueprint> NinjitsuUpgrades;
     public List<UpgradesBlueprint> ShurikenUpgrades;
     public List<UpgradesBlueprint> SwordUpgrades;
-    public GameObject selection;
+    public GameObject[] selection;
     public MagicAttack magicAttack; // Reference to MagicAttack for cooldown management
     public TextMeshProUGUI[] choiceTexts;
     private List<UpgradesBlueprint> currentChoices = new List<UpgradesBlueprint>();
@@ -77,15 +77,40 @@ public class Upgrades : MonoBehaviour
         // --- Set selection state ---
         isSelectingUpgrade = true;
         // ---------------------------
-        selection.SetActive(true);
         currentChoices = RollUpgrades(3);
+
+        if (currentChoices.Count == 3)
+        {
+            selection[0].SetActive(true);
+            selection[1].SetActive(true);
+            selection[2].SetActive(true);
+        }
+        else if (currentChoices.Count == 2)
+        {
+            selection[0].SetActive(true);
+            selection[1].SetActive(true);
+            // Assume selection[0] and selection[1] are active
+            // Set their anchored positions to be left and right of center
+            RectTransform rt0 = selection[0].GetComponent<RectTransform>();
+            RectTransform rt1 = selection[1].GetComponent<RectTransform>();
+            float offset = 350f; // Adjust as needed for your UI
+
+            rt0.anchoredPosition = new Vector2(-offset, 0);
+            rt1.anchoredPosition = new Vector2(offset, 0);
+        }
+        else
+        {
+            selection[0].SetActive(true);
+            RectTransform rt0 = selection[0].GetComponent<RectTransform>();
+            rt0.anchoredPosition = Vector2.zero;
+        }
 
         for (int i = 0; i < choiceTexts.Length; i++)
         {
             if (i < currentChoices.Count)
                 choiceTexts[i].text = currentChoices[i].name + "\n" + currentChoices[i].description;
             else
-                choiceTexts[i].text = "<<<";
+                return; // Exit if there are fewer choices than UI elements
         }
     }
 
@@ -115,7 +140,9 @@ public class Upgrades : MonoBehaviour
             magicAttack.canShoot = true; // Allow shooting again after level up
         }
         Time.timeScale = 1f; // Unpause the game
-        selection.SetActive(false);
+        selection[0].SetActive(false);
+        selection[1].SetActive(false);
+        selection[2].SetActive(false);
         isSelectingUpgrade = false;
 
         if (choiceIndex < currentChoices.Count)

@@ -5,7 +5,8 @@ using TMPro;
 
 public class Damage : MonoBehaviour
 {
-    int count = 0;
+    int rank = 0;
+    int killCount = 0;
     public int hp;
     int maxhp = 5;
     public GameManager gm;
@@ -39,20 +40,22 @@ public class Damage : MonoBehaviour
         if(HealNumb==1&&hp<maxhp)
         {
             hp++;
-            Debug.Log("healed");
         }
     }
 
     public void Monster()
     {
-        count++;
-        if (count>=100)
+        killCount++;
+        if (killCount >= 100)
         {
-            maxhp++;
-            hp++;
-            gameObject.transform.localScale += new Vector3(0.5f, 0.5f, 0.5f); // Increase player size by 50%
-            count -= 100;
-            Debug.Log("Monster!");
+            if(rank < 5)
+            {
+                rank++;
+                maxhp++;
+                hp++;
+                gameObject.transform.localScale += new Vector3(0.3f, 0.3f, 0.3f); // Increase player size by 50%
+                killCount -= 100;
+            }
         }
     }
 }
