@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1551904216657510320}
   - component: {fileID: 5815371497763439404}
   m_Layer: 0
-  m_Name: Shuriken4 1
+  m_Name: Fireball
   m_TagString: Fireball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -182,7 +182,7 @@ PrefabInstance:
     - target: {fileID: 2869591163406232066, guid: 5e66a6f8e1677d94992d91b1ddadd3a0,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4501840255886869246, guid: 5e66a6f8e1677d94992d91b1ddadd3a0,
         type: 3}
@@ -192,7 +192,7 @@ PrefabInstance:
     - target: {fileID: 4708657693230174329, guid: 5e66a6f8e1677d94992d91b1ddadd3a0,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7793277142727170504, guid: 5e66a6f8e1677d94992d91b1ddadd3a0,
         type: 3}
@@ -262,7 +262,7 @@ PrefabInstance:
     - target: {fileID: 8192665011540379367, guid: 5e66a6f8e1677d94992d91b1ddadd3a0,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8508918310514510023, guid: 5e66a6f8e1677d94992d91b1ddadd3a0,
         type: 3}
@@ -290,7 +290,10 @@ PrefabInstance:
       value: 0.48235294
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4708657693230174329, guid: 5e66a6f8e1677d94992d91b1ddadd3a0, type: 3}
+    - {fileID: 8192665011540379367, guid: 5e66a6f8e1677d94992d91b1ddadd3a0, type: 3}
+    - {fileID: 2869591163406232066, guid: 5e66a6f8e1677d94992d91b1ddadd3a0, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e66a6f8e1677d94992d91b1ddadd3a0, type: 3}

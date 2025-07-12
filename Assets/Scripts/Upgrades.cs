@@ -22,6 +22,7 @@ public class Upgrades : MonoBehaviour
     public List<UpgradesBlueprint> ShurikenUpgrades;
     public List<UpgradesBlueprint> SwordUpgrades;
     public GameObject[] selection;
+    public GameObject SelectionCanvas;
     public MagicAttack magicAttack; // Reference to MagicAttack for cooldown management
     public TextMeshProUGUI[] choiceTexts;
     private List<UpgradesBlueprint> currentChoices = new List<UpgradesBlueprint>();
@@ -84,11 +85,13 @@ public class Upgrades : MonoBehaviour
             selection[0].SetActive(true);
             selection[1].SetActive(true);
             selection[2].SetActive(true);
+            SelectionCanvas.SetActive(true);
         }
         else if (currentChoices.Count == 2)
         {
             selection[0].SetActive(true);
             selection[1].SetActive(true);
+            SelectionCanvas.SetActive(true);
             // Assume selection[0] and selection[1] are active
             // Set their anchored positions to be left and right of center
             RectTransform rt0 = selection[0].GetComponent<RectTransform>();
@@ -101,6 +104,7 @@ public class Upgrades : MonoBehaviour
         else
         {
             selection[0].SetActive(true);
+            SelectionCanvas.SetActive(true);
             RectTransform rt0 = selection[0].GetComponent<RectTransform>();
             rt0.anchoredPosition = Vector2.zero;
         }
@@ -143,6 +147,7 @@ public class Upgrades : MonoBehaviour
         selection[0].SetActive(false);
         selection[1].SetActive(false);
         selection[2].SetActive(false);
+        SelectionCanvas.SetActive(false);
         isSelectingUpgrade = false;
 
         if (choiceIndex < currentChoices.Count)

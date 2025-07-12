@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class WeaponSwitcher : MonoBehaviour
@@ -6,6 +7,7 @@ public class WeaponSwitcher : MonoBehaviour
     public GameObject Selection;
     public GameManager gm;
     public Upgrades upgrades;
+    public Animator animator; // Reference to the Animator component
     public int currentWeapon = 0;
     public void SwitchWeapon(int playerIndex)
     {
@@ -23,7 +25,7 @@ public class WeaponSwitcher : MonoBehaviour
         }
         playerPrefabs[playerIndex].SetActive(true);
         Selection.SetActive(false);
-        gm.UI[2].SetActive(true);
+        gm.UI[1].SetActive(true);
         gm.GameOn = true;
         Time.timeScale = 1;
 

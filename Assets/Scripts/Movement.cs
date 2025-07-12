@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     public Joystick movementJoystick; // Joystick for movement
     public Joystick rotationJoystick; // Joystick for rotation
     public GameManager gm; // Reference to the GameManager
+    public Animator anima;
 
     int count = 0;
     private Rigidbody rb; // Reference to the player's Rigidbody
@@ -46,6 +47,18 @@ public class Movement : MonoBehaviour
             joystickMovementInput = GetJoystickInput();
             RotateWithJoystick();
         }
+
+        if (!gm.isPc)
+        {
+            if (joystickMovementInput == Vector3.zero)
+            {
+                anima.SetBool("Running", false);
+            }
+            else
+            {
+                anima.SetBool("Running", true);
+            }
+        }
     }
 
     void FixedUpdate()
@@ -59,6 +72,11 @@ public class Movement : MonoBehaviour
             {
                 // Using AddForce in FixedUpdate for more consistent physics behavior
                 rb.AddForce(pcMovementInput.normalized * speed * 110);
+                anima.SetBool("Running", true);
+            }
+            else
+            {
+                anima.SetBool("Running", false);
             }
         }
         else

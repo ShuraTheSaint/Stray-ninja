@@ -8,9 +8,11 @@ public class Health : MonoBehaviour
     public string playerTag = "Player";
     public string swordTag = "Sword";
     public string spellTag = "Fireball";
+    public int OriginalSpeed; // Speed of the enemy
     public GameObject fire;
     public int[] damage; // [0]=bullet, [1]=sword, [2]=burn
     public int hpoints = 10;
+    public Enemycontroller enemyController; // Assign in Inspector
     public Xp xp; // Assign in Inspector
     int burnDuration = 5;
 
@@ -62,6 +64,7 @@ public class Health : MonoBehaviour
     {
         if (other.gameObject.CompareTag(bulletTag))
         {
+            enemyController.speed = 0; // Stop enemy movement when hit by a bullet
             if (damage.Length > 0)
                 ApplyDamage(damage[0]+up.kunaiDamage+up.calculatedDamage);
             
@@ -204,6 +207,7 @@ public class Health : MonoBehaviour
                     skinnedMeshRenderers[i].material.color = originalColors[i];
             }
         }
+        enemyController.speed = OriginalSpeed; // Resume enemy movement
         damaged = false;
     }
 

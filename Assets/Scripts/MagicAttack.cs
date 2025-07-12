@@ -4,7 +4,7 @@ using TMPro;
 
 public class MagicAttack : MonoBehaviour
 {
-    public Upgrades up; // Reference to Upgrades for cooldown management
+    Upgrades up; // Reference to Upgrades for cooldown management
     // Can the player shoot a fireball right now?
     public bool canShoot = true;
 

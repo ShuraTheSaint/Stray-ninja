@@ -1784,9 +1784,11 @@ MonoBehaviour:
   playerTag: Player
   swordTag: Sword
   spellTag: Fireball
+  OriginalSpeed: 3
   fire: {fileID: 8400184064247944051}
   damage: 010000000500000002000000
   hpoints: 10
+  enemyController: {fileID: 9131462362360009269}
   xp: {fileID: 9131462362360009268}
 --- !u!1 &9131462361603724545
 GameObject:
@@ -6070,8 +6072,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7793277142727170504, guid: 5e66a6f8e1677d94992d91b1ddadd3a0,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2869591163406232066, guid: 5e66a6f8e1677d94992d91b1ddadd3a0, type: 3}
+    - {fileID: 8192665011540379367, guid: 5e66a6f8e1677d94992d91b1ddadd3a0, type: 3}
+    - {fileID: 4708657693230174329, guid: 5e66a6f8e1677d94992d91b1ddadd3a0, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e66a6f8e1677d94992d91b1ddadd3a0, type: 3}
@@ -6138,6 +6148,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4334565512626788172, guid: 341c085af2776194c893fb98437a10c3,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9157167781544952357, guid: 341c085af2776194c893fb98437a10c3,
         type: 3}

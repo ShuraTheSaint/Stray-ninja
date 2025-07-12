@@ -1703,8 +1703,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9131462361592512381}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 93f0f5970d0fa2a4dbe0fe0ca42cf80e, type: 2}
+  m_Avatar: {fileID: 9000000, guid: 081930da5e255e348940373200bbeaca, type: 3}
+  m_Controller: {fileID: 9100000, guid: 4c7fe8e1a3919c549a79a706afefd1ce, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1784,9 +1784,11 @@ MonoBehaviour:
   playerTag: Player
   swordTag: Sword
   spellTag: Fireball
+  OriginalSpeed: 10
   fire: {fileID: 1018813277535430262}
   damage: 010000000500000002000000
   hpoints: 2
+  enemyController: {fileID: 9131462362360009269}
   xp: {fileID: 9131462362360009268}
 --- !u!1 &9131462361603724545
 GameObject:
@@ -6185,7 +6187,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2869591163406232066, guid: 5e66a6f8e1677d94992d91b1ddadd3a0, type: 3}
+    - {fileID: 8192665011540379367, guid: 5e66a6f8e1677d94992d91b1ddadd3a0, type: 3}
+    - {fileID: 4708657693230174329, guid: 5e66a6f8e1677d94992d91b1ddadd3a0, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e66a6f8e1677d94992d91b1ddadd3a0, type: 3}
