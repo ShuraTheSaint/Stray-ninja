@@ -11,6 +11,8 @@ public class Movement : MonoBehaviour
     public Joystick rotationJoystick; // Joystick for rotation
     public GameManager gm; // Reference to the GameManager
     public Animator anima;
+    bool soundPlaying = false; // Flag to check if sound is playing
+    float pitch = 1;
 
     int count = 0;
     private Rigidbody rb; // Reference to the player's Rigidbody
@@ -52,10 +54,17 @@ public class Movement : MonoBehaviour
         {
             if (joystickMovementInput == Vector3.zero)
             {
+                AudioManager.Instance.Stop("Running");
+                soundPlaying = false;
                 anima.SetBool("Running", false);
             }
             else
             {
+                if (!soundPlaying)
+                {
+                    AudioManager.Instance.Play("Running");
+                    soundPlaying = true;
+                }
                 anima.SetBool("Running", true);
             }
         }
@@ -72,10 +81,17 @@ public class Movement : MonoBehaviour
             {
                 // Using AddForce in FixedUpdate for more consistent physics behavior
                 rb.AddForce(pcMovementInput.normalized * speed * 110);
+                if(!soundPlaying)
+                {
+                    AudioManager.Instance.Play("Running");
+                    soundPlaying = true;
+                }
                 anima.SetBool("Running", true);
             }
             else
             {
+                AudioManager.Instance.Stop("Running");
+                soundPlaying = false;
                 anima.SetBool("Running", false);
             }
         }
@@ -151,8 +167,12 @@ public class Movement : MonoBehaviour
             {
                 count++;
                 speed += 0.2f;
+                pitch += 0.2f;
+                AudioManager.Instance.SetPitch("Running", pitch);
                 yield return new WaitForSeconds(3);
                 speed -= 0.2f;
+                pitch -= 0.2f;
+                AudioManager.Instance.SetPitch("Running", pitch);
                 count--;
             }
         }
@@ -162,8 +182,12 @@ public class Movement : MonoBehaviour
             {
                 count++;
                 speed += 2;
+                pitch += 0.1f;
+                AudioManager.Instance.SetPitch("Running", pitch);
                 yield return new WaitForSeconds(3);
                 speed -= 2;
+                pitch -= 0.1f;
+                AudioManager.Instance.SetPitch("Running", pitch);
                 count--;
             }
         }

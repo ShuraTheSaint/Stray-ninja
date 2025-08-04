@@ -10,17 +10,22 @@ public class Health : MonoBehaviour
     public string spellTag = "Fireball";
     public int OriginalSpeed; // Speed of the enemy
     public GameObject fire;
+    public ParticleSystem fireFX;
+    public GameObject Explosion;
     public int[] damage; // [0]=bullet, [1]=sword, [2]=burn
     public int hpoints = 10;
     public Enemycontroller enemyController; // Assign in Inspector
     public Xp xp; // Assign in Inspector
     int burnDuration = 5;
+    float burnTick = 1;
+    public static int burnSound = 0;
 
     private bool isPlayerInRange = false;
     private bool isCoroutineRunning = false;
     private bool hasDied = false;
     private bool damaged = false;
     private bool burning = false;
+    private bool UpgradeAplied = false; // Flag to check if upgrade is applied
 
     private SkinnedMeshRenderer[] skinnedMeshRenderers;
     private Color[] originalColors;
@@ -32,7 +37,8 @@ public class Health : MonoBehaviour
     Movement move;
     Experience expS;
 
-    private void Awake()
+
+    public void Awake()
     {
         expS = GameObject.Find("Player").GetComponent<Experience>();
         move = GameObject.Find("Player")?.GetComponent<Movement>();
@@ -40,7 +46,7 @@ public class Health : MonoBehaviour
         if (spawnZombies == null) spawnZombies = GameObject.Find("Spawner")?.GetComponent<SpawnZombies>();
 
         if (fire != null)
-        fire.SetActive(false);
+            fire.SetActive(false);
 
         skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
         if (skinnedMeshRenderers != null && skinnedMeshRenderers.Length > 0)
@@ -64,10 +70,10 @@ public class Health : MonoBehaviour
     {
         if (other.gameObject.CompareTag(bulletTag))
         {
+            AudioManager.Instance.PlayOneShot("Hit");
             enemyController.speed = 0; // Stop enemy movement when hit by a bullet
-            if (damage.Length > 0)
-                ApplyDamage(damage[0]+up.kunaiDamage+up.calculatedDamage);
-            
+            ApplyDamage(damage[0] + up.kunaiDamage + up.calculatedDamage);
+
             // Only destroy the bullet if Kunai upgrade is NOT active
             if (up == null || !up.kunai)
             {
@@ -83,41 +89,62 @@ public class Health : MonoBehaviour
 
         if (other.gameObject.CompareTag(swordTag))
         {
-            if (damage.Length > 1)
-                ApplyDamage(damage[1]+up.strengthDamage);
+            ApplyDamage(damage[1] + up.strengthDamage);
+            AudioManager.Instance.PlayOneShot("Slash");
         }
 
         if (other.gameObject.CompareTag(spellTag))
         {
             if (!burning)
             {
+                burning = true; // Set burning first to avoid race conditions
+                burnSound++;
+                if (burnSound == 1)
+                {
+                    AudioManager.Instance.Play("Fire");
+                }
                 StartCoroutine(Burn());
                 if (up.Combustion)
                 {
                     ApplyDamage(6);
+                    Explosion.SetActive(true);
                 }
-                burning = true;
             }
         }
     }
 
     IEnumerator Burn()
     {
-        if (up.hell)
+        if (up.hell && !UpgradeAplied)
         {
-            burnDuration = 10;
+            burnTick = 0.3f;
+            if (fireFX != null)
+            {
+                var hellFlames = fireFX.main;
+                hellFlames.startColor = new ParticleSystem.MinMaxGradient(new Color(0f, 0.1f, 0.7f)); // blue
+            }
+            else
+            {
+                Debug.LogWarning("fireFX is not assigned on " + gameObject.name);
+            }
+            UpgradeAplied = true;
         }
-        if (fire != null)
-            fire.SetActive(true);
+        fire.SetActive(true);
+        yield return new WaitForSeconds(burnTick);
         for (int x = 1; x <= burnDuration; x++)
         {
-            if (damage.Length > 2)
-                ApplyDamage(damage[2]+up.hellDamage);
-            yield return new WaitForSeconds(1);
+            ApplyDamage(damage[2] + up.hellDamage);
+            yield return new WaitForSeconds(burnTick);
         }
         burning = false;
-        if (fire != null)
-            fire.SetActive(false);
+        fire.SetActive(false);
+
+        burnSound--;
+        if (burnSound < 0) burnSound = 0;
+        if (burnSound == 0)
+        {
+            AudioManager.Instance.Stop("Fire");
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -150,15 +177,26 @@ public class Health : MonoBehaviour
 
         if (hpoints <= 0)
         {
-            if(up.tasteofblood)
+            if (burning)
+            {
+                burning = false;
+                burnSound--;
+                if (burnSound < 0) burnSound = 0;
+                Debug.Log("Burn sound count: " + burnSound);
+                if (burnSound == 0)
+                {
+                    AudioManager.Instance.Stop("Fire");
+                }
+            }
+            if (up.tasteofblood)
             {
                 move.Tasting();
             }
-            if(up.Lifesteal)
+            if (up.Lifesteal)
             {
                 playerDamage.Heal();
             }
-            if(up.Monster)
+            if (up.Monster)
             {
                 playerDamage.Monster();
             }
@@ -167,7 +205,7 @@ public class Health : MonoBehaviour
             {
                 if (gameObject.name == "FastEnemy(Clone)")
                 {
-                    if(!up.shadowCore) xp.dropxpp(2);
+                    if (!up.shadowCore) xp.dropxpp(2);
                     else expS.AddExperience(4);
                 }
                 else if (gameObject.name == "StrongEnemy(Clone)")
@@ -219,7 +257,6 @@ public class Health : MonoBehaviour
         {
             playerDamage.hp--;
         }
-
         yield return new WaitForSeconds(1);
         isCoroutineRunning = false;
     }

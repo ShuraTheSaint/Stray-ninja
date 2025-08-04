@@ -6,6 +6,7 @@ public class Fireball : MonoBehaviour
 {
     public Rigidbody rigidb;
     MagicAttack wand;
+    public ParticleSystem fireEffects; // Particle system for fire effects
     public float followSpeed; // Speed at which the object follows the target
     Joystick rotationJoystick; // Reference to the rotation joystick
     private static Upgrades up; // Static cache
@@ -23,6 +24,8 @@ public class Fireball : MonoBehaviour
 
     void Awake()
     {
+        AudioManager.Instance.Play("Ignite");
+        AudioManager.Instance.PlayDelayed("Burn", 0.5f);
         if (up == null) up = GameObject.Find("Upgrade Manager")?.GetComponent<Upgrades>();
         wand = GameObject.Find("Player").GetComponent<MagicAttack>();
         rigidb = GetComponent<Rigidbody>();
@@ -40,6 +43,14 @@ public class Fireball : MonoBehaviour
         if (up.MidnightSun)
         {
             StartCoroutine(risingSun());
+        }
+        if (up.hell)
+        {
+            if (fireEffects != null)
+            {
+                var BlueFlames = fireEffects.main;
+                BlueFlames.startColor = new ParticleSystem.MinMaxGradient(new Color(0f, 0.1f, 0.7f)); // blue
+            }
         }
     }
 
@@ -59,6 +70,8 @@ public class Fireball : MonoBehaviour
     void Extinguish()
     {
         wand.coolDown = true;
+        AudioManager.Instance.Stop("Ignite");
+        AudioManager.Instance.Stop("Burn");
         Destroy(gameObject);
     }
 

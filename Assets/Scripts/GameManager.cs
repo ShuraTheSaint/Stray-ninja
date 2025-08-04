@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
         if (UI.Length > 5) UI[4].SetActive(false);
         if (UI.Length > 6) UI[5].SetActive(false);
 
+        AudioManager.Instance.StopAllSounds();
         GameOn = false;
         Time.timeScale = 0;
     }
@@ -45,5 +46,21 @@ public class GameManager : MonoBehaviour
     public void quit()
     {
         Application.Quit();
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Health.burnSound = 0; // Reset burn sound counter when a new scene is loaded
+        AudioManager.SoundCD = false; // Reset sound cooldown flag
     }
 }

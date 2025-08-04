@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidb: {fileID: -1551904216657510320}
+  fireEffects: {fileID: 7439782962680014222}
   followSpeed: 35
   aimAssistRadius: 7
   assistAngleThreshold: 100
@@ -179,6 +180,21 @@ PrefabInstance:
       propertyPath: scalingMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2528853955901836009, guid: 5e66a6f8e1677d94992d91b1ddadd3a0,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.36320752
+      objectReference: {fileID: 0}
+    - target: {fileID: 2528853955901836009, guid: 5e66a6f8e1677d94992d91b1ddadd3a0,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.36320752
+      objectReference: {fileID: 0}
+    - target: {fileID: 2528853955901836009, guid: 5e66a6f8e1677d94992d91b1ddadd3a0,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2869591163406232066, guid: 5e66a6f8e1677d94992d91b1ddadd3a0,
         type: 3}
       propertyPath: m_IsActive
@@ -188,6 +204,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Magic fire pro red
+      objectReference: {fileID: 0}
+    - target: {fileID: 4501840255886869246, guid: 5e66a6f8e1677d94992d91b1ddadd3a0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4708657693230174329, guid: 5e66a6f8e1677d94992d91b1ddadd3a0,
         type: 3}
@@ -321,6 +342,11 @@ PrefabInstance:
       propertyPath: scalingMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1436115965707841713, guid: 341c085af2776194c893fb98437a10c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1897841504729659150, guid: 341c085af2776194c893fb98437a10c3,
         type: 3}
       propertyPath: scalingMode
@@ -406,6 +432,21 @@ PrefabInstance:
       propertyPath: scalingMode
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5627467913429850506, guid: 341c085af2776194c893fb98437a10c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7439071521675905333, guid: 341c085af2776194c893fb98437a10c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8220022982219715681, guid: 341c085af2776194c893fb98437a10c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9157167781544952357, guid: 341c085af2776194c893fb98437a10c3,
         type: 3}
       propertyPath: m_Name
@@ -424,6 +465,12 @@ PrefabInstance:
 --- !u!4 &6345546357808473766 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4334565512626788172, guid: 341c085af2776194c893fb98437a10c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 7217177370627011050}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7439782962680014222 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 222923488392795236, guid: 341c085af2776194c893fb98437a10c3,
     type: 3}
   m_PrefabInstance: {fileID: 7217177370627011050}
   m_PrefabAsset: {fileID: 0}

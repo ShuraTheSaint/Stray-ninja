@@ -33,28 +33,47 @@ public class SpawnZombies : MonoBehaviour
     {
         if (gm.GameOn == true)
         {
-            if (zombieCount <= 100) // Limit the number of zombies to prevent performance issues
+            if (zombieCount <= 150) // Limit the number of zombies to prevent performance issues
             {
-                // Random angle and distance for spawn position
-                float angle = Random.Range(0f, 360f);
-                float radius = 40f; // Use the same as xoffset/yoffset magnitude
-                Vector3 offset = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * radius;
-                Vector3 spawnPos = spawnPoint.position + offset;
+                int maxAttempts = 10;
+                Vector3 spawnPos = Vector3.zero;
+                bool validSpawn = false;
 
-                // Randomly pick enemy type: 0=normal, 1=strong, 2=fast
-                int enemyType = Random.Range(0, 10);
-                GameObject prefabToSpawn = zombiePrefab;
-                if (enemyType == 1)
-                    prefabToSpawn = StrongerZombiePrefab;
-                else if (enemyType == 2)
-                    prefabToSpawn = FasterZombiePrefab;
+                for (int attempt = 0; attempt < maxAttempts; attempt++)
+                {
+                    // Random angle and distance for spawn position
+                    float angle = Random.Range(0f, 360f);
+                    float radius = 40f;
+                    Vector3 offset = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), 0, Mathf.Sin(angle * Mathf.Deg2Rad)) * radius;
+                    spawnPos = spawnPoint.position + offset;
 
-                // Make zombie face the player
-                Vector3 directionToPlayer = (spawnPoint.position - spawnPos).normalized;
-                Quaternion lookRotation = Quaternion.LookRotation(directionToPlayer, Vector3.up);
+                    // Check for obstacles at spawn position (adjust radius as needed)
+                    float checkRadius = 3.0f;
+                    Collider[] hitColliders = Physics.OverlapSphere(spawnPos, checkRadius, LayerMask.GetMask("Obstacles"));
+                    if (hitColliders.Length == 0)
+                    {
+                        validSpawn = true;
+                        break;
+                    }
+                }
 
-                Instantiate(prefabToSpawn, spawnPos, lookRotation);
-                zombieCount++;
+                if (validSpawn)
+                {
+                    // Randomly pick enemy type: 0=normal, 1=strong, 2=fast
+                    int enemyType = Random.Range(0, 10);
+                    GameObject prefabToSpawn = zombiePrefab;
+                    if (enemyType == 1)
+                        prefabToSpawn = StrongerZombiePrefab;
+                    else if (enemyType == 2)
+                        prefabToSpawn = FasterZombiePrefab;
+
+                    // Make zombie face the player
+                    Vector3 directionToPlayer = (spawnPoint.position - spawnPos).normalized;
+                    Quaternion lookRotation = Quaternion.LookRotation(directionToPlayer, Vector3.up);
+
+                    Instantiate(prefabToSpawn, spawnPos, lookRotation);
+                    zombieCount++;
+                }
             }
         }
         yield return new WaitForSeconds(spawnInterval);

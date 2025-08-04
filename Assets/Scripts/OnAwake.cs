@@ -9,12 +9,19 @@ public class OnAwake : MonoBehaviour
     void Awake()
     {
         if (up == null) up = GameObject.Find("Upgrade Manager")?.GetComponent<Upgrades>();
-        rb.AddForce(this.transform.forward * 50, ForceMode.Impulse);
+        rb.AddForce(this.transform.right * 50, ForceMode.Impulse);
         if(up.smoothThrow)
         {
             Destroy(gameObject, 0.4f);
         }
         else Destroy(gameObject, 0.2f);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Obstacles"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
 

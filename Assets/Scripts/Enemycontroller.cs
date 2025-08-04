@@ -1,40 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Enemycontroller : MonoBehaviour
 {
-    public float speed;
-    Transform target;
-    public NavMeshAgent agent;
-    GameManager gm;
-    GameObject player;
-    public Animator anim;
+    public float speed = 3.5f;
+    public float updateThreshold = 1f; // Minimum movement before updating path
+    public float maxDistanceFromTarget = 100f; // Customize as needed
+
+    private Transform target;
+    private NavMeshAgent agent;
+    private GameManager gm;
+    private GameObject player;
+    private Vector3 lastTargetPosition;
+    private SpawnZombies zombieCount; // Assign in Inspector
+
     void Start()
     {
+        zombieCount = GameObject.Find("Spawner").GetComponent<SpawnZombies>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        if (gameObject.name == "FastEnemy(Clone)")
-        {
-            anim.speed = 2f; // Set animation speed to 2x
-        }
-        else if (gameObject.name == "StrongEnemy(Clone)")
-        {
-            anim.speed = 0.75f; // Set animation speed to 0.75x
-        }
+        player = GameObject.Find("Player");
+        agent = GetComponent<NavMeshAgent>();
+        target = player.transform;
+        lastTargetPosition = target.position;
     }
 
     void Update()
     {
-        player = GameObject.Find("Player");
-        target = player.transform;
-
-        if (gm.GameOn == true)
+        if (gm.GameOn)
         {
-            agent.speed = speed;
-            float distance = Vector3.Distance(target.position, transform.position);
+            float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-            agent.SetDestination(target.position);
+            if (!agent.isOnNavMesh || distanceToTarget > maxDistanceFromTarget)
+            {
+                zombieCount.zombieCount--;
+                Destroy(gameObject);
+                return;
+            }
+
+            agent.speed = speed;
+
+            float distanceMoved = Vector3.Distance(target.position, lastTargetPosition);
+            if (distanceMoved > updateThreshold)
+            {
+                agent.SetDestination(target.position);
+                lastTargetPosition = target.position;
+            }
         }
     }
 }

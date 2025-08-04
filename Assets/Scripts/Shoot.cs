@@ -10,6 +10,12 @@ public class Shoot : MonoBehaviour
     public GameObject bullet; // Prefab for the main bullet (shuriken)
     public float fireRate = 50f; // Bullets per second
     public Animator anim;
+    public MeshFilter MeshFilter; // Mesh for the bullet
+    public MeshRenderer WeaponRenderer;
+    public Mesh kunaiMesh; // Mesh for the kunai bullet
+    public Material kunaiMat;
+    public Mesh shurikenMesh;
+    public Material shurikenMat;
     public GameManager gm;
     public Joystick rotationJoystick; // Reference to the rotation joystick
     Upgrades up;
@@ -25,6 +31,8 @@ public class Shoot : MonoBehaviour
         fireWait = new WaitForSeconds(1f / fireRate);
         AnimWait = new WaitForSeconds(0.075f);
         lastAttackSpeed = up != null ? up.attackSpeed : 1f;
+        MeshFilter.mesh = shurikenMesh;
+        WeaponRenderer.material = shurikenMat;
     }
 
     void Update()
@@ -62,6 +70,12 @@ public class Shoot : MonoBehaviour
                 }
             }
         }
+
+        if (up.kunai)
+        {
+            MeshFilter.mesh = kunaiMesh;// Update the bullet mesh to kunai if the upgrade is applied
+            WeaponRenderer.material = kunaiMat;
+        }
     }
 
     private bool GetControllerShootInput()
@@ -78,13 +92,14 @@ public class Shoot : MonoBehaviour
         canShoot = false;
         // Instantiate the bullet at the gun's position with the player's rotation; 
         // using gun.forward so the bullet travels in the gun's facing direction.
-        Instantiate(bullet, gun.position + gun.forward, player.rotation);
+        Instantiate(bullet, gun.position + gun.right, gun.rotation);
         yield return fireWait;
         canShoot = true;
     }
 
     private IEnumerator PlayAnimation()
     {
+        AudioManager.Instance.PlayOneShot("Throw"); // Play the shooting sound
         anim.SetBool("Shooting", true);
         yield return AnimWait;
         anim.SetBool("Shooting", false);

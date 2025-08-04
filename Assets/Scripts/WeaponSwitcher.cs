@@ -28,7 +28,7 @@ public class WeaponSwitcher : MonoBehaviour
         gm.UI[1].SetActive(true);
         gm.GameOn = true;
         Time.timeScale = 1;
-
+        AudioManager.Instance.InitializeAudio();
     }
 }
 

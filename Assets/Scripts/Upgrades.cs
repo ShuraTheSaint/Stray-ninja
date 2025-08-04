@@ -69,6 +69,7 @@ public class Upgrades : MonoBehaviour
 
     void ShowUpgradeChoices()
     {
+        AudioManager.Instance.StopAllSounds();
         Time.timeScale = 0f; // Pause the game
         // --- Prevent level up if no upgrades are available ---
         if (GetCurrentVariantUpgrades().Count == 0)
