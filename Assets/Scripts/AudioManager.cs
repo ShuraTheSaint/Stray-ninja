@@ -124,6 +124,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void SetVolume(float newVolume)
+    {
+        AudioListener.volume = newVolume;
+    }
+
     IEnumerator SoundCoolDown()
     {
         SoundCD = true;

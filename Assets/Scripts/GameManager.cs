@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public GameObject[] UI;
     public bool GameOn = false;
     public bool isPc = true;
+    public GameObject SettingsTab;
 
     public void Start()
     {
@@ -62,5 +63,20 @@ public class GameManager : MonoBehaviour
     {
         Health.burnSound = 0; // Reset burn sound counter when a new scene is loaded
         AudioManager.SoundCD = false; // Reset sound cooldown flag
+    }
+
+    public void Settings()
+    {
+        SettingsTab.SetActive(true);
+    }
+
+    public void SettingsOff()
+    {
+        SettingsTab.SetActive(false);
+    }
+
+    public void VolumeSetting(float volume)
+    {
+        AudioManager.Instance.SetVolume(volume);
     }
 }
