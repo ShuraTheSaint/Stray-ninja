@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject[] UI;
     public bool GameOn = false;
-    public bool isPc = true;
+    public bool isPc;
     public GameObject SettingsTab;
 
     public void Start()

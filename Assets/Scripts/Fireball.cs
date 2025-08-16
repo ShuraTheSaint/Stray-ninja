@@ -148,7 +148,7 @@ public class Fireball : MonoBehaviour
 
             if (finalDirection != Vector3.zero)
             {
-                Vector3 step = finalDirection * (followSpeed) * Time.deltaTime;
+                Vector3 step = finalDirection * (followSpeed) * 0.5f * Time.deltaTime;
                 rigidb.MovePosition(transform.position + step);
             }
         }
