@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,8 @@ public class GameManager : MonoBehaviour
     public bool GameOn = false;
     public bool isPc;
     public GameObject SettingsTab;
+    int wincondition = 5; // Number of keys to win
+    public TextMeshProUGUI keyText; // Reference to the UI text element to display keys collected
 
     public void Start()
     {
@@ -25,6 +28,13 @@ public class GameManager : MonoBehaviour
             if (UI.Length > 3) UI[4].SetActive(false);
             if (UI.Length > 4) UI[5].SetActive(false);
         }
+    }
+
+    public void KeyCollected()
+    {
+        wincondition--;
+        keyText.text=(5-wincondition).ToString();
+        if (wincondition == 0) Debug.Log("Won");
     }
 
     public void playerDead()

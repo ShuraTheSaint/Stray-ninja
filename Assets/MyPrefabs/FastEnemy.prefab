@@ -1785,8 +1785,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  agent: {fileID: 9131462362360009274}
-  anim: {fileID: 9131462362360009275}
+  updateThreshold: 1
+  maxDistanceFromTarget: 50
 --- !u!114 &9131462362360009268
 MonoBehaviour:
   m_ObjectHideFlags: 0
